@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->foreignId('departemen_id')->nullable();
             $table->foreignId('pegawai_id')->nullable();
             $table->string('name');
+            $table->string('username');
+            $table->string('email');
             $table->string('password');
             $table->string('peran');
             $table->string('status');

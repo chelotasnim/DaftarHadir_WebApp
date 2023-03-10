@@ -36,8 +36,11 @@ class AccDepartemen extends Component
         $data['perusahaan_id'] = Auth::user()->instansi->id;
         $data['nama_dept'] = $rawData[0]->nama_dept;
         $data['atasan1'] = $rawData[0]->atasan1;
+        $data['telp_1'] = $rawData[0]->telp_1;
         $data['atasan2'] = $rawData[0]->atasan2;
+        $data['telp_2'] = $rawData[0]->telp_2;
         $data['atasan3'] = $rawData[0]->atasan3;
+        $data['telp_3'] = $rawData[0]->telp_3;
         $data['status'] = $rawData[0]->status;
 
         $change['operator_id'] = $rawData[0]->pengirim_id;
@@ -59,8 +62,11 @@ class AccDepartemen extends Component
             Departemen::where('id', $rawData[0]->departemen_id)->update([
                 'nama_dept' => $data['nama_dept'],
                 'atasan1' => $data['atasan1'],
+                'telp_1' => $data['telp_1'],
                 'atasan2' => $data['atasan2'],
+                'telp_2' => $data['telp_2'],
                 'atasan3' => $data['atasan3'],
+                'telp_3' => $data['telp_3'],
                 'status' => $data['status']
             ]);
             ReqDepartemen::where('id', $id)->update([

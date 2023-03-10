@@ -32,8 +32,11 @@ class ApprDepartemen extends Component
 
     public $nama_dept;
     public $atasan1;
+    public $telp_1;
     public $atasan2;
+    public $telp_2;
     public $atasan3;
+    public $telp_3;
     public $status;
     public $keterangan_pengirim;
     public function reqNew()
@@ -41,11 +44,14 @@ class ApprDepartemen extends Component
         $dept_data = $this->validate([
             'nama_dept' => 'required|min:3|max:25',
             'atasan1' => 'required',
+            'telp_1' => 'required',
             'atasan2' => 'required',
+            'telp_2' => 'required',
             'status' => 'required',
             'keterangan_pengirim' => 'required|min:25|max:255'
         ]);
         $dept_data['atasan3'] = $this->atasan3;
+        $dept_data['telp_3'] = $this->telp_3;
         $dept_data['pengirim_id'] = Auth::user()->id;
         $dept_data['jenis_pengajuan'] = 'Penambahan';
         $dept_data['status_pengajuan'] = 'Menunggu Approval';
@@ -72,11 +78,20 @@ class ApprDepartemen extends Component
         if(!empty($this->atasan1)) {
             $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Atasan 1</span>' . $dept_data[0]->atasan1 . '</li>';
         };
+        if(!empty($this->telp_1)) {
+            $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Nomor WA Atasan 1</span>' . $dept_data[0]->telp_1 . '</li>';
+        };
         if(!empty($this->atasan2)) {
             $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Atasan 2</span>' . $dept_data[0]->atasan2 . '</li>';
         };
+        if(!empty($this->telp_2)) {
+            $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Nomor WA Atasan 2</span>' . $dept_data[0]->telp_2 . '</li>';
+        };
         if(!empty($this->atasan3)) {
             $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Atasan 3</span>' . $dept_data[0]->atasan3 . '</li>';
+        };
+        if(!empty($this->telp_3)) {
+            $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Nomor WA Atasan 3</span>' . $dept_data[0]->telp_3 . '</li>';
         };
         if(!empty($this->status)) {
             $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Status</span>' . $dept_data[0]->status . '</li>';
@@ -99,17 +114,35 @@ class ApprDepartemen extends Component
         } else {
             $newData['atasan1'] = $dept_data[0]->atasan1;
         };
+        if(!empty($this->telp_1)) {
+            $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Nomor WA Atasan 1</span>' . $this->telp_1 . '</li>';
+            $newData['telp_1'] = $this->telp_1;
+        } else {
+            $newData['telp_1'] = $dept_data[0]->telp_1;
+        };
         if(!empty($this->atasan2)) {
             $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Atasan 2</span>' . $this->atasan2 . '</li>';
             $newData['atasan2'] = $this->atasan2;
         } else {
             $newData['atasan2'] = $dept_data[0]->atasan2;
         };
+        if(!empty($this->telp_2)) {
+            $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Nomor WA Atasan 1</span>' . $this->telp_2 . '</li>';
+            $newData['telp_2'] = $this->telp_2;
+        } else {
+            $newData['telp_2'] = $dept_data[0]->telp_2;
+        };
         if(!empty($this->atasan3)) {
             $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Atasan 3</span>' . $this->atasan3 . '</li>';
             $newData['atasan3'] = $this->atasan3;
         } else {
             $newData['atasan3'] = $dept_data[0]->atasan3;
+        };
+        if(!empty($this->telp_3)) {
+            $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Nomor WA Atasan 1</span>' . $this->telp_3 . '</li>';
+            $newData['telp_3'] = $this->telp_3;
+        } else {
+            $newData['telp_3'] = $dept_data[0]->telp_3;
         };
         if(!empty($this->status)) {
             $newData['list_perubahan'] = $newData['list_perubahan'] . '<li><span>Status</span>' . $this->status . '</li>';
@@ -145,8 +178,11 @@ class ApprDepartemen extends Component
         $req_data['departemen_id'] = $dept_data[0]->id;
         $req_data['nama_dept'] = $dept_data[0]->nama_dept;
         $req_data['atasan1'] = $dept_data[0]->atasan1;
+        $req_data['telp_1'] = $dept_data[0]->telp_1;
         $req_data['atasan2'] = $dept_data[0]->atasan2;
+        $req_data['telp_2'] = $dept_data[0]->telp_2;
         $req_data['atasan3'] = $dept_data[0]->atasan3;
+        $req_data['telp_3'] = $dept_data[0]->telp_3;
         $req_data['status'] = $dept_data[0]->status;
         $req_data['jenis_pengajuan'] = 'Penghapusan';
         $req_data['status_pengajuan'] = 'Menunggu Approval';

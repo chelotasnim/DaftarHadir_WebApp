@@ -70,18 +70,32 @@
             </div>
             <div class="form-row" style="margin-bottom: 5px; margin-top: 32px;">
                 <div class="form-field">
-                    <label for="atasan1">Nama & WA Atasan 1</label>
+                    <label for="atasan1">Nama Atasan 1</label>
                     <input wire:model.defer="atasan1" id="atasan1" type="text" autocomplete="off">
                 </div>
                 <div class="form-field">
-                    <label for="atasan2">Nama & WA Atasan 2</label>
-                    <input wire:model.defer="atasan2" id="atasan2" type="text" autocomplete="off">
+                    <label for="telp_1">Nomor WA Atasan 1</label>
+                    <input wire:model.defer="telp_1" id="telp_1" type="text" autocomplete="off">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-field">
-                    <label for="atasan2">Nama & WA Atasan 3 (Optional)</label>
-                    <input wire:model.defer="atasan3" id="atasan2" type="text" autocomplete="off">
+                    <label for="atasan2">Nama Atasan 2</label>
+                    <input wire:model.defer="atasan2" id="atasan2" type="text" autocomplete="off">
+                </div>
+                <div class="form-field">
+                    <label for="telp_2">Nomor WA Atasan 2</label>
+                    <input wire:model.defer="telp_2" id="telp_2" type="text" autocomplete="off">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="atasan3">Nama Atasan 3</label>
+                    <input wire:model.defer="atasan3" id="atasan3" type="text" autocomplete="off">
+                </div>
+                <div class="form-field">
+                    <label for="telp_3">Nomor WA Atasan 3</label>
+                    <input wire:model.defer="telp_3" id="telp_3" type="text" autocomplete="off">
                 </div>
             </div>
             <div class="form-row" style="margin-top: 32px">
@@ -139,20 +153,40 @@
                 </div>
                 <div class="form-row" style="margin-bottom: 5px; margin-top: 32px;">
                     <div class="form-field">
-                        <label for="atasan1">Nama & WA Atasan 1</label>
+                        <label for="atasan1">Nama Atasan 1</label>
                         <input wire:model.defer="atasan1" id="atasan1" type="text" autocomplete="off" placeholder="{{ $departemen->atasan1 }}">
                     </div>
                     <div class="form-field">
-                        <label for="atasan2">Nama & WA Atasan 2</label>
-                        <input wire:model.defer="atasan2" id="atasan2" type="text" autocomplete="off" placeholder="{{ $departemen->atasan2 }}">
+                        <label for="telp_1">Nomor WA Atasan 1</label>
+                        <input wire:model.defer="telp_1" id="telp_1" type="text" autocomplete="off" placeholder="{{ $departemen->telp_1 }}">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-field">
-                        <label for="atasan3">Nama & WA Atasan 3 (Optional)</label>
+                        <label for="atasan2">Nama Atasan 2</label>
+                        <input wire:model.defer="atasan2" id="atasan2" type="text" autocomplete="off" placeholder="{{ $departemen->atasan2 }}">
+                    </div>
+                    <div class="form-field">
+                        <label for="telp_2">Nomor WA Atasan 2</label>
+                        <input wire:model.defer="telp_2" id="telp_2" type="text" autocomplete="off" placeholder="{{ $departemen->telp_2 }}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="atasan3">Nama Atasan 3 (Optional)</label>
                         <input wire:model.defer="atasan3" id="atasan3" type="text" autocomplete="off"
                         @if ($departemen->atasan3 !== null)
                             placeholder="{{ $departemen->atasan3 }}"
+                            @else
+                            placeholder="--;--"
+                        @endif
+                        >
+                    </div>
+                    <div class="form-field">
+                        <label for="telp_3">Nomor WA Atasan 3 (Optional)</label>
+                        <input wire:model.defer="telp_3" id="telp_3" type="text" autocomplete="off"
+                        @if ($departemen->telp_3 !== null)
+                            placeholder="{{ $departemen->telp_3 }}"
                             @else
                             placeholder="--;--"
                         @endif
@@ -212,20 +246,40 @@
                 </div>
                 <div class="form-row" style="margin-bottom: 5px; margin-top: 32px;">
                     <div class="form-field">
-                        <label for="atasan1">Nama & WA Atasan 1</label>
+                        <label for="atasan1">Nama Atasan 1</label>
                         <input id="atasan1" type="text" autocomplete="off" value="{{ $departemen->atasan1 }}" readonly>
                     </div>
                     <div class="form-field">
-                        <label for="atasan2">Nama & WA Atasan 2</label>
-                        <input id="atasan2" type="text" autocomplete="off" value="{{ $departemen->atasan2 }}" readonly>
+                        <label for="atasan1">Nomor WA Atasan 1</label>
+                        <input id="atasan1" type="text" autocomplete="off" value="{{ $departemen->telp_1 }}" readonly>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-field">
-                        <label for="atasan3">Nama & WA Atasan 3 (Optional)</label>
+                        <label for="atasan1">Nama Atasan 1</label>
+                        <input id="atasan1" type="text" autocomplete="off" value="{{ $departemen->atasan1 }}" readonly>
+                    </div>
+                    <div class="form-field">
+                        <label for="atasan1">Nomor WA Atasan 1</label>
+                        <input id="atasan1" type="text" autocomplete="off" value="{{ $departemen->telp_1 }}" readonly>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="atasan3">Nama Atasan 3 (Optional)</label>
                         <input id="atasan3" type="text" autocomplete="off"
                         @if ($departemen->atasan3 !== null)
                             placeholder="{{ $departemen->atasan3 }}"
+                            @else
+                            placeholder="--;--"
+                        @endif
+                        readonly> 
+                    </div>
+                    <div class="form-field">
+                        <label for="atasan3">Nomor WA Atasan 3 (Optional)</label>
+                        <input id="atasan3" type="text" autocomplete="off"
+                        @if ($departemen->telp_3 !== null)
+                            placeholder="{{ $departemen->telp_3 }}"
                             @else
                             placeholder="--;--"
                         @endif

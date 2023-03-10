@@ -23,7 +23,9 @@ class AccAdmin extends Component
         $data['perusahaan_id'] = $req_data[0]->pegawai->jabatan->jadwal->departemen->perusahaan->id;
         $data['departemen_id'] = $req_data[0]->pegawai->jabatan->jadwal->departemen->id;
         $data['pegawai_id'] = $req_data[0]->pegawai->id;
-        $data['name'] = $req_data[0]->pegawai->email;
+        $data['name'] = $req_data[0]->pegawai->name;
+        $data['username'] = $req_data[0]->pegawai->name;
+        $data['email'] = $req_data[0]->pegawai->email;
         if(strlen($req_data[0]->password) > 50) {
             $data['password'] = $req_data[0]->password;
         } else {
@@ -43,13 +45,15 @@ class AccAdmin extends Component
                 'status_pengajuan' => 'Approved'
             ]);
 
-            $change['perubahan'] = 'Menambahkan admin ' . $req_data[0]->pegawai->email;
+            $change['perubahan'] = 'Menambahkan admin ' . $req_data[0]->pegawai->name;
             $change['jenis_perubahan'] = 'Penambahan';
             ChangeLog::create($change);
         } else if($req_data[0]->jenis_pengajuan === 'Perubahan') {
             User::where('id', $req_data[0]->user_id)->update([
                 'pegawai_id' => $data['pegawai_id'],
-                'name' => $req_data[0]->pegawai->email,
+                'name' => $req_data[0]->pegawai->name,
+                'username' => $req_data[0]->pegawai->name,
+                'email' => $req_data[0]->pegawai->email,
                 'password' => $data['password'],
                 'peran' => $data['peran'],
                 'status' => $data['status']

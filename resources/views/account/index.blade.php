@@ -27,11 +27,25 @@
                         <p>Selamat Datang di Daftar Hadir</p>
                     </div>
                     <div class="form-prompt">
-                        <input type="text" name="name" placeholder="Username" value="{{ old('name') }}" autocomplete="off">
+                        <input fieldFor="name" class="switched-field" type="text" name="name" placeholder="Nama Anda" value="{{ old('name') }}" autocomplete="off">
+                        <input fieldFor="username" class="switched-field" type="text" name="username" placeholder="Username" value="{{ old('username') }}" autocomplete="off">
+                        <input fieldFor="email" class="switched-field used" type="email" name="email" placeholder="Email" value="{{ old('email') }}" autocomplete="off">
                         <input type="password" name="password" placeholder="Password">
                         <button class="evented-btn">Masuk</button>
                     </div>
                     <div class="form-footer">
+                        <p>Pilih Opsi Masuk Dibawah</p>
+                        <div class="login-select">
+                            <div loginWith="name" class="login-select-box">
+                                <i class="fa-solid fa-signature"></i>
+                            </div>
+                            <div loginWith="username" class="login-select-box">
+                                <i class="fa-solid fa-user-tag"></i>
+                            </div>
+                            <div loginWith="email" class="login-select-box active">
+                                <i class="fa-solid fa-envelope-circle-check"></i>
+                            </div>
+                        </div>
                         <p>&copy;Daftar Hadir</p>
                     </div>
                 </form>

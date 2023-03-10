@@ -20,8 +20,11 @@ class CreateReqDepartemensTable extends Migration
             $table->foreignId('departemen_id')->nullable();
             $table->string('nama_dept');
             $table->string('atasan1')->nullable();
+            $table->string('telp_1')->nullable();
             $table->string('atasan2')->nullable();
+            $table->string('telp_2')->nullable();
             $table->string('atasan3')->nullable();
+            $table->string('telp_3')->nullable();
             $table->string('status')->nullable();
             $table->text('list_perubahan')->nullable();
             $table->string('keterangan_pengirim');

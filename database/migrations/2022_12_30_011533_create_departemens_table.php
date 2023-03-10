@@ -18,8 +18,11 @@ class CreateDepartemensTable extends Migration
             $table->foreignId('perusahaan_id');
             $table->string('nama_dept');
             $table->string('atasan1');
+            $table->string('telp_1');
             $table->string('atasan2');
+            $table->string('telp_2');
             $table->string('atasan3')->nullable();
+            $table->string('telp_3')->nullable();
             $table->string('status');
             $table->timestamps();
         });

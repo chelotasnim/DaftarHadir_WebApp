@@ -40,6 +40,8 @@ class DatabaseSeeder extends Seeder
         User::create([
             'perusahaan_id' => 1,
             'name' => 'Yuvi Corp',
+            'username' => 'yuvicorp',
+            'email' => 'uv@gmail.com',
             'password' => Hash::make('123456789'),
             'peran' => 'Atasan Utama',
             'status' => 'Aktif'
@@ -48,6 +50,8 @@ class DatabaseSeeder extends Seeder
         User::create([
             'perusahaan_id' => 1,
             'name' => 'STB MANAGER - 01',
+            'username' => 'manager01',
+            'email' => 'manager01@gmail.com',
             'password' => Hash::make('123456789'),
             'peran' => 'Pengelola Utama',
             'status' => 'Aktif'
@@ -56,16 +60,20 @@ class DatabaseSeeder extends Seeder
         Departemen::create([
             'perusahaan_id' => 1,
             'nama_dept' => 'Management A1',
-            'atasan1' => 'Yuviar Nuzul (089276578723)',
-            'atasan2' => 'Rizky Gufron (085234567109)',
+            'atasan1' => 'Yuviar Nuzul',
+            'telp_1' => '089276578723',
+            'atasan2' => 'Rizky Gufron',
+            'telp_2' => '085234567109',
             'status' => 'Aktif'
         ]);
 
         Departemen::create([
             'perusahaan_id' => 1,
             'nama_dept' => 'Marketing A1',
-            'atasan1' => 'Amrozi Dullian (086522781625)',
-            'atasan2' => 'Julius Matius (081244617298)',
+            'atasan1' => 'Amrozi Dullian',
+            'telp_1' => '086522781625',
+            'atasan2' => 'Julius Matius',
+            'telp_2' => '081244617298',
             'status' => 'Aktif'
         ]);
 

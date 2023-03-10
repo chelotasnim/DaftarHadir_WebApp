@@ -25,6 +25,8 @@ class Users extends Controller
     public function superRegist() {
         $managerData = request()->validate([
             'name' => 'required|max:25|min:5|unique:users',
+            'username' => 'required|max:25|min:5|unique:users',
+            'email' => 'required|email:dns',
             'password' => 'required|max:16|min:8'
         ]);
         $managerData['password'] = bcrypt($managerData['password']);
@@ -37,12 +39,24 @@ class Users extends Controller
     }
 
     public function login() {
-        $userData = request()->validate([
-            'name' => 'required|max:25|min:5',
-            'password' => 'required|max:16|min:8'
-        ]);
+        $userData = request()->validate(['password' => 'required|max:16|min:8']);
+        $loggedUser = [];
 
-        $loggedUser = User::where('name', $userData['name'])->select('status', 'peran')->get();
+        if(!empty(request()->input('name'))) {
+            $userData['name'] = request()->input('name');
+            $loggedUser = User::where('name', $userData['name'])->select('status', 'peran')->get();
+        };
+
+        if(!empty(request()->input('username'))) {
+            $userData['username'] = request()->input('username');
+            $loggedUser = User::where('username', $userData['username'])->select('status', 'peran')->get();
+        };
+
+        if(!empty(request()->input('email'))) {
+            $userData['email'] = request()->input('email');
+            $loggedUser = User::where('email', $userData['email'])->select('status', 'peran')->get();
+        };
+
         if(Auth::attempt($userData)) {
             if($loggedUser[0]->status === 'Lisensi') {
                 request()->session()->regenerate();
