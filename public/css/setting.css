@@ -1,0 +1,426 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Montserrat+Alternates&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+img {
+    pointer-events: none;
+}
+
+body.blue-page {
+    --main-color: rgb(101, 129, 244);
+    --page-color: rgb(233, 241, 255);
+    --dark-color: rgb(120, 120, 150);
+    --filter: hue-rotate(0deg);
+}
+
+body.red-page {
+    --main-color: rgb(255, 100, 100);
+    --page-color: rgb(255, 233, 241);
+    --dark-color: rgb(150, 120, 120);
+    --filter: hue-rotate(125deg);
+}
+
+body.green-page {
+    --main-color: rgb(100, 200, 150);
+    --page-color: rgb(233, 255, 241);
+    --dark-color: rgb(120, 150, 120);
+    --filter: hue-rotate(275deg);
+}
+
+body.black-page {
+    --main-color: rgb(80, 80, 120);
+    --page-color: rgb(233, 241, 255);
+    --dark-color: rgb(120, 120, 150);
+    --filter: hue-rotate(25deg) grayscale(.8);
+}
+
+.page {
+    position: relative;
+    min-height: 100vh;
+    background: var(--page-color);
+    overflow: hidden;
+}
+
+nav {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    padding: 16px 10px;
+    z-index: 100;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 15px rgba(0, 0, 0, .07);
+    gap: 12px;
+}
+
+nav i {
+    font-size: 14px;
+    color: var(--main-color);
+}
+
+.nav-box {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.nav-box.as-btn:hover ~ .name-box {
+    bottom: 116px;
+}
+
+.name-box {
+    position: absolute;
+    bottom: -100%;
+    transform: rotate(180deg) translateX(-8px);
+    writing-mode: vertical-lr;
+    font-size: 14px;
+    color: var(--main-color);
+}
+
+.as-btn {
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: var(--main-color);
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+}
+
+.as-btn i {
+    color: rgb(255, 255, 255);
+}
+
+.setting {
+    position: relative;
+    padding-left: 54px;
+    min-height: 100vh;
+}
+
+header {
+    position: relative;
+    display: flex;
+    padding-left: 425px;
+    flex-wrap: nowrap;
+    align-items: center;
+    overflow-x: scroll;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, .07);
+}
+
+header::-webkit-scrollbar {
+    height: 0;
+}
+
+.quick-setting-menu {
+    position: relative;
+    flex: 1;
+    padding: 32px;
+    min-width: 425px;
+}
+
+.quick-setting-menu.active {
+    position: fixed;
+    top: 0;
+    left: 54px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .07);
+    background: rgb(255, 255, 255);
+    z-index: 10;
+}
+
+.quick-setting-box {
+    position: relative;
+    transform: scale(.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, .07);
+    transition: .3s;
+}
+
+.quick-setting-menu.active .quick-setting-box {
+    transform: scale(1);
+}
+
+.quick-setting-preview {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.quick-setting-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: var(--filter);
+}
+
+.quick-setting-stat {
+    display: flex;
+    padding: 10px;
+    background: var(--main-color);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.stat-box {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+}
+
+.stat-rate-box {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.preview-cover, .setting-status, .add-setting {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.quick-setting-menu.active .preview-cover {
+    cursor: context-menu;
+}
+
+.setting-status, .add-setting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, .6);
+    opacity: 0;
+    transition: .3s;
+    pointer-events: none;
+    font-size: 32px;
+    color: var(--main-color);
+}
+
+.add-setting {
+    opacity: 1;
+    background: none;
+    color: var(--dark-color);
+}
+
+.quick-setting-menu.active .setting-status {
+    opacity: 1;
+}
+
+.quick-setting-menu.customize-setting .quick-setting-preview img {
+    filter: grayscale(1) brightness(.9);
+}
+
+.quick-setting-menu.customize-setting .quick-setting-stat {
+    background: var(--dark-color);
+}
+
+.quick-setting-menu.active .quick-setting-stat {
+    background: var(--main-color);
+}
+
+.setting-detail {
+    position: relative;
+    padding-top: 40px;
+    min-height: calc(100vh - 249.2px);
+    max-height: calc(100vh - 249.2px);
+    background: rgb(255, 255, 255);
+    z-index: 10;
+    overflow-y: scroll;
+}
+
+.setting-detail::-webkit-scrollbar {
+    width: 0;
+}
+
+.setting-detail hr {
+    max-width: 75%;
+    margin: 38px auto;
+    border: 1px solid rgb(235, 235, 235);
+}
+
+.setting-option-wrapper {
+    display: none;
+}
+
+.setting-option-wrapper.disabled-setting {
+    pointer-events: none;
+    opacity: .4;
+}
+
+.setting-option-wrapper.active-detail, .color-setting {
+    display: flex;
+    max-width: 90%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.color-setting {
+    position: relative;
+    gap: 8px;
+}
+
+.color-box {
+    position: relative;
+    display: flex;
+    flex: 1;
+    min-width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    background: var(--dark-color);
+    border: 6px solid rgb(235, 235, 235);
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 14px;
+    color: rgba(255, 255, 255, .45);
+}
+
+.color-box.used {
+    color: rgb(255, 255, 255);
+}
+
+.color-box.used.red {
+    background: rgb(255, 100, 100);
+}
+
+.color-box.used.green {
+    background: rgb(100, 200, 150);
+}
+
+.color-box.used.blue {
+    background: rgb(101, 129, 244);
+}
+
+.color-box.used.black {
+    background: rgb(80, 80, 120);
+}
+
+.color-box input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.color-box.used input {
+    cursor: context-menu;
+}
+
+.setting-option {
+    flex: 1;
+    display: flex;
+    min-width: 200px;
+    gap: 8px;
+}
+
+.setting-check input {
+    width: 18px;
+    height: 18px;
+    appearance: none;
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 3px;
+    outline: none;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.setting-check input::after {
+    content: '\2713';
+    color: rgb(255, 255, 255);
+}
+
+.setting-check input:checked {
+    background: var(--main-color);
+    border: 1px solid var(--main-color);
+}
+
+.setting-desc {
+    color: rgb(100, 100, 100);
+}
+
+.setting-desc h5 {
+    margin: 2px 0 5px;
+    font-size: 14px;
+}
+
+.setting-desc p {
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.used-by-now {
+    position: absolute;
+    display: block;
+    top: 8px;
+    left: 8px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    background: var(--main-color);
+    text-transform: uppercase;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+}
+
+.notif {
+    position: fixed;
+    display: flex;
+    top: 28px;
+    right: 32px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    align-items: center;
+    gap: 8px;
+    transform: translateX(150%);
+    animation: showError 3s ease-in-out forwards;
+    animation-delay: calc(1s * var(--delay));
+    background: rgba(255, 100, 100);
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+}
+
+.notif.success {
+    background: rgb(100, 200, 150);
+}
+
+.notif.success span {
+    line-height: 32px;
+}
+
+.notif.success i {
+    transform: translateY(3px) translateX(-3px);
+}
+
+.notif i {
+    font-size: 24px;
+}
+
+@keyframes showError {
+    0%, 100% {
+        transform: translateX(150%);
+    }
+    10%, 90% {
+        transform: translateX(-10%);
+    }
+    15%, 85% {
+        transform: translateX(0);
+    }
+}

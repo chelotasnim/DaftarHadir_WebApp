@@ -1,0 +1,1535 @@
+#LR VW 4L
+#LR VW 4L
+                <div count-log="0" class="day-is-senin wrap-check-day">
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_senin1') }}" name="log_name_senin1" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_senin1') }}" name="log_limit_senin1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_senin1') }}" name="log_time_senin1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_senin1">Jenis Check Log</label>
+                            <input value="{{ old('log_type_senin1') }}" name="log_type_senin1" id="log_type_senin1" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_senin1') }}" name="log_toleransi_senin1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_senin1') }}" name="log_range_senin1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_senin2') }}" name="log_name_senin2" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_senin2') }}" name="log_limit_senin2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_senin2') }}" name="log_time_senin2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_senin2">Jenis Check Log</label>
+                            <input value="{{ old('log_type_senin2') }}" name="log_type_senin2" id="log_type_senin2" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_senin2') }}" name="log_toleransi_senin2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_senin2') }}" name="log_range_senin2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_senin3') }}" name="log_name_senin3" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_senin3') }}" name="log_limit_senin3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_senin3') }}" name="log_time_senin3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_senin3">Jenis Check Log</label>
+                            <input value="{{ old('log_type_senin3') }}" name="log_type_senin3" id="log_type_senin3" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_senin3') }}" name="log_toleransi_senin3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_senin3') }}" name="log_range_senin3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_senin4') }}" name="log_name_senin4" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_senin4') }}" name="log_limit_senin4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_senin4') }}" name="log_time_senin4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_senin4">Jenis Check Log</label>
+                            <input value="{{ old('log_type_senin4') }}" name="log_type_senin4" id="log_type_senin4" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_senin4') }}" name="log_toleransi_senin4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_senin4') }}" name="log_range_senin4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_senin5') }}" name="log_name_senin5" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_senin5') }}" name="log_limit_senin5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_senin5') }}" name="log_time_senin5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_senin5">Jenis Check Log</label>
+                            <input value="{{ old('log_type_senin5') }}" name="log_type_senin5" id="log_type_senin5" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_senin5') }}" name="log_toleransi_senin5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_senin5') }}" name="log_range_senin5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_senin6') }}" name="log_name_senin6" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_senin6') }}" name="log_limit_senin6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_senin6') }}" name="log_time_senin6" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_senin6">Jenis Check Log</label>
+                            <input value="{{ old('log_type_senin6') }}" name="log_type_senin6" id="log_type_senin6" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_senin6') }}" name="log_toleransi_senin6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_senin6') }}" name="log_range_senin6" type="time">
+                        </div>
+                    </div>
+                </div>
+                <div count-log="0" class="day-is-selasa wrap-check-day">
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_selasa1') }}" name="log_name_selasa1" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_selasa1') }}" name="log_limit_selasa1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_selasa1') }}" name="log_time_selasa1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_selasa1">Jenis Check Log</label>
+                            <input value="{{ old('log_type_selasa1') }}" name="log_type_selasa1" id="log_type_selasa1" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_selasa1') }}" name="log_toleransi_selasa1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_selasa1') }}" name="log_range_selasa1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_selasa2') }}" name="log_name_selasa2" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_selasa2') }}" name="log_limit_selasa2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_selasa2') }}" name="log_time_selasa2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_selasa2">Jenis Check Log</label>
+                            <input value="{{ old('log_type_selasa2') }}" name="log_type_selasa2" id="log_type_selasa2" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_selasa2') }}" name="log_toleransi_selasa2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_selasa2') }}" name="log_range_selasa2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_selasa3') }}" name="log_name_selasa3" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_selasa3') }}" name="log_limit_selasa3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_selasa3') }}" name="log_time_selasa3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_selasa3">Jenis Check Log</label>
+                            <input value="{{ old('log_type_selasa3') }}" name="log_type_selasa3" id="log_type_selasa3" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_selasa3') }}" name="log_toleransi_selasa3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_selasa3') }}" name="log_range_selasa3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_selasa4') }}" name="log_name_selasa4" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_selasa4') }}" name="log_limit_selasa4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_selasa4') }}" name="log_time_selasa4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_selasa4">Jenis Check Log</label>
+                            <input value="{{ old('log_type_selasa4') }}" name="log_type_selasa4" id="log_type_selasa4" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_selasa4') }}" name="log_toleransi_selasa4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_selasa4') }}" name="log_range_selasa4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_selasa5') }}" name="log_name_selasa5" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_selasa5') }}" name="log_limit_selasa5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_selasa5') }}" name="log_time_selasa5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_selasa5">Jenis Check Log</label>
+                            <input value="{{ old('log_type_selasa5') }}" name="log_type_selasa5" id="log_type_selasa5" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_selasa5') }}" name="log_toleransi_selasa5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_selasa5') }}" name="log_range_selasa5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_selasa6') }}" name="log_name_selasa6" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_selasa6') }}" name="log_limit_selasa6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_selasa6') }}" name="log_time_selasa6" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_selasa6">Jenis Check Log</label>
+                            <input value="{{ old('log_type_selasa6') }}" name="log_type_selasa6" id="log_type_selasa6" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_selasa6') }}" name="log_toleransi_selasa6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_selasa6') }}" name="log_range_selasa6" type="time">
+                        </div>
+                    </div>
+                </div>
+                <div count-log="0" class="day-is-rabu wrap-check-day">
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_rabu1') }}" name="log_name_rabu1" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_rabu1') }}" name="log_limit_rabu1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_rabu1') }}" name="log_time_rabu1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_rabu1">Jenis Check Log</label>
+                            <input value="{{ old('log_type_rabu1') }}" name="log_type_rabu1" id="log_type_rabu1" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_rabu1') }}" name="log_toleransi_rabu1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_rabu1') }}" name="log_range_rabu1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_rabu2') }}" name="log_name_rabu2" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_rabu2') }}" name="log_limit_rabu2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_rabu2') }}" name="log_time_rabu2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_rabu2">Jenis Check Log</label>
+                            <input value="{{ old('log_type_rabu2') }}" name="log_type_rabu2" id="log_type_rabu2" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_rabu2') }}" name="log_toleransi_rabu2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_rabu2') }}" name="log_range_rabu2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_rabu3') }}" name="log_name_rabu3" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_rabu3') }}" name="log_limit_rabu3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_rabu3') }}" name="log_time_rabu3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_rabu3">Jenis Check Log</label>
+                            <input value="{{ old('log_type_rabu3') }}" name="log_type_rabu3" id="log_type_rabu3" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_rabu3') }}" name="log_toleransi_rabu3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_rabu3') }}" name="log_range_rabu3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_rabu4') }}" name="log_name_rabu4" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_rabu4') }}" name="log_limit_rabu4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_rabu4') }}" name="log_time_rabu4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_rabu4">Jenis Check Log</label>
+                            <input value="{{ old('log_type_rabu4') }}" name="log_type_rabu4" id="log_type_rabu4" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_rabu4') }}" name="log_toleransi_rabu4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_rabu4') }}" name="log_range_rabu4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_rabu5') }}" name="log_name_rabu5" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_rabu5') }}" name="log_limit_rabu5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_rabu5') }}" name="log_time_rabu5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_rabu5">Jenis Check Log</label>
+                            <input value="{{ old('log_type_rabu5') }}" name="log_type_rabu5" id="log_type_rabu5" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_rabu5') }}" name="log_toleransi_rabu5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_rabu5') }}" name="log_range_rabu5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_rabu6') }}" name="log_name_rabu6" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_rabu6') }}" name="log_limit_rabu6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_rabu6') }}" name="log_time_rabu6" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_rabu6">Jenis Check Log</label>
+                            <input value="{{ old('log_type_rabu6') }}" name="log_type_rabu6" id="log_type_rabu6" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_rabu6') }}" name="log_toleransi_rabu6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_rabu6') }}" name="log_range_rabu6" type="time">
+                        </div>
+                    </div>
+                </div>
+                <div count-log="0" class="day-is-kamis wrap-check-day">
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_kamis1') }}" name="log_name_kamis1" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_kamis1') }}" name="log_limit_kamis1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_kamis1') }}" name="log_time_kamis1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_kamis1">Jenis Check Log</label>
+                            <input value="{{ old('log_type_kamis1') }}" name="log_type_kamis1" id="log_type_kamis1" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_kamis1') }}" name="log_toleransi_kamis1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_kamis1') }}" name="log_range_kamis1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_kamis2') }}" name="log_name_kamis2" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_kamis2') }}" name="log_limit_kamis2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_kamis2') }}" name="log_time_kamis2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_kamis2">Jenis Check Log</label>
+                            <input value="{{ old('log_type_kamis2') }}" name="log_type_kamis2" id="log_type_kamis2" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_kamis2') }}" name="log_toleransi_kamis2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_kamis2') }}" name="log_range_kamis2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_kamis3') }}" name="log_name_kamis3" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_kamis3') }}" name="log_limit_kamis3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_kamis3') }}" name="log_time_kamis3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_kamis3">Jenis Check Log</label>
+                            <input value="{{ old('log_type_kamis3') }}" name="log_type_kamis3" id="log_type_kamis3" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_kamis3') }}" name="log_toleransi_kamis3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_kamis3') }}" name="log_range_kamis3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_kamis4') }}" name="log_name_kamis4" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_kamis4') }}" name="log_limit_kamis4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_kamis4') }}" name="log_time_kamis4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_kamis4">Jenis Check Log</label>
+                            <input value="{{ old('log_type_kamis4') }}" name="log_type_kamis4" id="log_type_kamis4" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_kamis4') }}" name="log_toleransi_kamis4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_kamis4') }}" name="log_range_kamis4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_kamis5') }}" name="log_name_kamis5" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_kamis5') }}" name="log_limit_kamis5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_kamis5') }}" name="log_time_kamis5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_kamis5">Jenis Check Log</label>
+                            <input value="{{ old('log_type_kamis5') }}" name="log_type_kamis5" id="log_type_kamis5" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_kamis5') }}" name="log_toleransi_kamis5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_kamis5') }}" name="log_range_kamis5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_kamis6') }}" name="log_name_kamis6" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_kamis6') }}" name="log_limit_kamis6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_kamis6') }}" name="log_time_kamis6" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_kamis6">Jenis Check Log</label>
+                            <input value="{{ old('log_type_kamis6') }}" name="log_type_kamis6" id="log_type_kamis6" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_kamis6') }}" name="log_toleransi_kamis6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_kamis6') }}" name="log_range_kamis6" type="time">
+                        </div>
+                    </div>
+                </div>
+                <div count-log="0" class="day-is-jumat wrap-check-day">
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_jumat1') }}" name="log_name_jumat1" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_jumat1') }}" name="log_limit_jumat1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_jumat1') }}" name="log_time_jumat1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_jumat1">Jenis Check Log</label>
+                            <input value="{{ old('log_type_jumat1') }}" name="log_type_jumat1" id="log_type_jumat1" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_jumat1') }}" name="log_toleransi_jumat1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_jumat1') }}" name="log_range_jumat1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_jumat2') }}" name="log_name_jumat2" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_jumat2') }}" name="log_limit_jumat2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_jumat2') }}" name="log_time_jumat2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_jumat2">Jenis Check Log</label>
+                            <input value="{{ old('log_type_jumat2') }}" name="log_type_jumat2" id="log_type_jumat2" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_jumat2') }}" name="log_toleransi_jumat2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_jumat2') }}" name="log_range_jumat2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_jumat3') }}" name="log_name_jumat3" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_jumat3') }}" name="log_limit_jumat3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_jumat3') }}" name="log_time_jumat3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_jumat3">Jenis Check Log</label>
+                            <input value="{{ old('log_type_jumat3') }}" name="log_type_jumat3" id="log_type_jumat3" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_jumat3') }}" name="log_toleransi_jumat3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_jumat3') }}" name="log_range_jumat3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_jumat4') }}" name="log_name_jumat4" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_jumat4') }}" name="log_limit_jumat4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_jumat4') }}" name="log_time_jumat4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_jumat4">Jenis Check Log</label>
+                            <input value="{{ old('log_type_jumat4') }}" name="log_type_jumat4" id="log_type_jumat4" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_jumat4') }}" name="log_toleransi_jumat4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_jumat4') }}" name="log_range_jumat4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_jumat5') }}" name="log_name_jumat5" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_jumat5') }}" name="log_limit_jumat5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_jumat5') }}" name="log_time_jumat5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_jumat5">Jenis Check Log</label>
+                            <input value="{{ old('log_type_jumat5') }}" name="log_type_jumat5" id="log_type_jumat5" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_jumat5') }}" name="log_toleransi_jumat5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_jumat5') }}" name="log_range_jumat5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_jumat6') }}" name="log_name_jumat6" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_jumat6') }}" name="log_limit_jumat6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_jumat6') }}" name="log_time_jumat6" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_jumat6">Jenis Check Log</label>
+                            <input value="{{ old('log_type_jumat6') }}" name="log_type_jumat6" id="log_type_jumat6" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_jumat6') }}" name="log_toleransi_jumat6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_jumat6') }}" name="log_range_jumat6" type="time">
+                        </div>
+                    </div>
+                </div>
+                <div count-log="0" class="day-is-sabtu wrap-check-day">
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_sabtu1') }}" name="log_name_sabtu1" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_sabtu1') }}" name="log_limit_sabtu1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_sabtu1') }}" name="log_time_sabtu1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_sabtu1">Jenis Check Log</label>
+                            <input value="{{ old('log_type_sabtu1') }}" name="log_type_sabtu1" id="log_type_sabtu1" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_sabtu1') }}" name="log_toleransi_sabtu1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_sabtu1') }}" name="log_range_sabtu1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_sabtu2') }}" name="log_name_sabtu2" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_sabtu2') }}" name="log_limit_sabtu2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_sabtu2') }}" name="log_time_sabtu2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_sabtu2">Jenis Check Log</label>
+                            <input value="{{ old('log_type_sabtu2') }}" name="log_type_sabtu2" id="log_type_sabtu2" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_sabtu2') }}" name="log_toleransi_sabtu2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_sabtu2') }}" name="log_range_sabtu2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_sabtu3') }}" name="log_name_sabtu3" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_sabtu3') }}" name="log_limit_sabtu3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_sabtu3') }}" name="log_time_sabtu3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_sabtu3">Jenis Check Log</label>
+                            <input value="{{ old('log_type_sabtu3') }}" name="log_type_sabtu3" id="log_type_sabtu3" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_sabtu3') }}" name="log_toleransi_sabtu3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_sabtu3') }}" name="log_range_sabtu3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_sabtu4') }}" name="log_name_sabtu4" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_sabtu4') }}" name="log_limit_sabtu4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_sabtu4') }}" name="log_time_sabtu4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_sabtu4">Jenis Check Log</label>
+                            <input value="{{ old('log_type_sabtu4') }}" name="log_type_sabtu4" id="log_type_sabtu4" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_sabtu4') }}" name="log_toleransi_sabtu4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_sabtu4') }}" name="log_range_sabtu4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_sabtu5') }}" name="log_name_sabtu5" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_sabtu5') }}" name="log_limit_sabtu5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_sabtu5') }}" name="log_time_sabtu5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_sabtu5">Jenis Check Log</label>
+                            <input value="{{ old('log_type_sabtu5') }}" name="log_type_sabtu5" id="log_type_sabtu5" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_sabtu5') }}" name="log_toleransi_sabtu5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_sabtu5') }}" name="log_range_sabtu5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_sabtu6') }}" name="log_name_sabtu6" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_sabtu6') }}" name="log_limit_sabtu6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_sabtu6') }}" name="log_time_sabtu6" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_sabtu6">Jenis Check Log</label>
+                            <input value="{{ old('log_type_sabtu6') }}" name="log_type_sabtu6" id="log_type_sabtu6" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_sabtu6') }}" name="log_toleransi_sabtu6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_sabtu6') }}" name="log_range_sabtu6" type="time">
+                        </div>
+                    </div>
+                </div>
+                <div count-log="0" class="day-is-minggu wrap-check-day">
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_minggu1') }}" name="log_name_minggu1" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_minggu1') }}" name="log_limit_minggu1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_minggu1') }}" name="log_time_minggu1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_minggu1">Jenis Check Log</label>
+                            <input value="{{ old('log_type_minggu1') }}" name="log_type_minggu1" id="log_type_minggu1" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_minggu1') }}" name="log_toleransi_minggu1" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_minggu1') }}" name="log_range_minggu1" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_minggu2') }}" name="log_name_minggu2" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_minggu2') }}" name="log_limit_minggu2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_minggu2') }}" name="log_time_minggu2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_minggu2">Jenis Check Log</label>
+                            <input value="{{ old('log_type_minggu2') }}" name="log_type_minggu2" id="log_type_minggu2" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_minggu2') }}" name="log_toleransi_minggu2" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_minggu2') }}" name="log_range_minggu2" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_minggu3') }}" name="log_name_minggu3" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_minggu3') }}" name="log_limit_minggu3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_minggu3') }}" name="log_time_minggu3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_minggu3">Jenis Check Log</label>
+                            <input value="{{ old('log_type_minggu3') }}" name="log_type_minggu3" id="log_type_minggu3" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_minggu3') }}" name="log_toleransi_minggu3" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_minggu3') }}" name="log_range_minggu3" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_minggu4') }}" name="log_name_minggu4" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_minggu4') }}" name="log_limit_minggu4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_minggu4') }}" name="log_time_minggu4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_minggu4">Jenis Check Log</label>
+                            <input value="{{ old('log_type_minggu4') }}" name="log_type_minggu4" id="log_type_minggu4" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_minggu4') }}" name="log_toleransi_minggu4" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_minggu4') }}" name="log_range_minggu4" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_minggu5') }}" name="log_name_minggu5" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_minggu5') }}" name="log_limit_minggu5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_minggu5') }}" name="log_time_minggu5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_minggu5">Jenis Check Log</label>
+                            <input value="{{ old('log_type_minggu5') }}" name="log_type_minggu5" id="log_type_minggu5" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_minggu5') }}" name="log_toleransi_minggu5" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_minggu5') }}" name="log_range_minggu5" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_minggu6') }}" name="log_name_minggu6" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_minggu6') }}" name="log_limit_minggu6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_minggu6') }}" name="log_time_minggu6" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_minggu6">Jenis Check Log</label>
+                            <input value="{{ old('log_type_minggu6') }}" name="log_type_minggu6" id="log_type_minggu6" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_minggu6') }}" name="log_toleransi_minggu6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_minggu6') }}" name="log_range_minggu6" type="time">
+                        </div>
+                    </div>
+                </div>
+#LR VW 4L
+#LR VW 4L
+
+
+
+
+

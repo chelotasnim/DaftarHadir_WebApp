@@ -1,0 +1,48 @@
+#LR D45
+#LR D45
+                    <div class="form-row log-row">
+                        <div class="form-field">
+                            <label for="">Nama Check Log</label>
+                            <input value="{{ old('log_name_minggu6') }}" name="log_name_minggu6" type="text" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Jam / Waktu</label>
+                            <input value="{{ old('log_limit_minggu6') }}" name="log_limit_minggu6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Dibuka</label>
+                            <input value="{{ old('log_time_minggu6') }}" name="log_time_minggu6" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                        <div class="form-field">
+                            <label for="log_type_minggu6">Jenis Check Log</label>
+                            <input value="{{ old('log_type_minggu6') }}" name="log_type_minggu6" id="log_type_minggu6" type="text" class="filter-input" autocomplete="off">
+                        </div>
+                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                            <p>
+                                <span class="related-title">Masuk</span>
+                            </p>
+                            <p>
+                                <span class="related-title">Keluar</span>
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label for="">Toleransi</label>
+                            <input value="{{ old('log_toleransi_minggu6') }}" name="log_toleransi_minggu6" type="time">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Check Log Ditutup</label>
+                            <input value="{{ old('log_range_minggu6') }}" name="log_range_minggu6" type="time">
+                        </div>
+                    </div>
+#LR D45
+#LR D45
+
+
+
+
+
+
+
+
