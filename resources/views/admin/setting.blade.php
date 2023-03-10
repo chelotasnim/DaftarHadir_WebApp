@@ -217,7 +217,7 @@
                     <div class="quick-setting-box">
                         <div class="quick-setting-preview">
                             <img src="{{ asset('assets/dashboard-settings.png') }}" draggable="false"/>
-                            <input type="radio" name="quick_setting" class="preview-cover" value="Custom">
+                            <input type="radio" name="quick_setting" class="preview-cover" value="Custom" @if($quickUi === 'Custom'){{ 'checked' }}@endif>
                             <div class="add-setting">
                                 <i class="fa-solid fa-circle-plus"></i>
                             </div>

@@ -1,11 +1,14 @@
 <tbody>
     @can('highManager')
+        @php
+            $number = 1;
+        @endphp
         @foreach ($departemens as $departemen)
             @foreach ($departemen->jadwals as $jadwal)
                 @foreach ($jadwal->jabatans as $jabatan)
                     @foreach ($jabatan->pegawais as $pegawai)    
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $number++ }}</td>
                             <td>{{ $pegawai->nip }}</td>
                             <td class="col-left">{{ $pegawai->nama }}</td>
                             <td class="col-left">{{ $pegawai->jabatan->jadwal->departemen->nama_dept }}</td>
