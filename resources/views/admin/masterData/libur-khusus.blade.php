@@ -16,14 +16,12 @@
                 @endcan
                 {{ Auth::user()->peran }}
             </div>
-            @can('manager')
                 <div class="controller-box">
                     <div onclick="showModal('4dd', 'new')" class="controller-btn modal-trigger">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         Tambah Libur
                     </div>
                 </div>
-            @endcan
         </div>
         <div class="data-grid master-grid">
             <table id="libur-khusus">
@@ -36,9 +34,7 @@
                         <th class="col-left">Nama Libur</th>
                         <th>Tanggal</th>
                         <th class="col-left">Pengumuman</th>
-                        @can('manager')
                             <th class="action">*</th>
-                        @endcan
                     </tr>
                 </thead>
                 @livewire('admin.master.show-libur-khusus')

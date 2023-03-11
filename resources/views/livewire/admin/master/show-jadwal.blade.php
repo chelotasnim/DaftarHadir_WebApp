@@ -18,7 +18,6 @@
                                 <span class="as-label red">{{ $jadwal->status }}</span>
                             @endif
                         </td>
-                        @can('manager')
                             <td class="action">
                                 <span onclick="showModal({{ $jadwal->id }}, 'change')" class="as-label yellow modal-trigger">
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -27,7 +26,6 @@
                                     <i class="fa-solid fa-trash-can"></i>
                                 </span>
                             </td>
-                        @endcan
                     </tr>
                 @endif
             @endforeach
@@ -48,7 +46,6 @@
                                     <span class="as-label red">{{ $jadwal->status }}</span>
                                 @endif
                             </td>
-                            @can('manager')
                                 <td class="action">
                                     <span onclick="showModal({{ $jadwal->id }}, 'change')" class="as-label yellow modal-trigger">
                                         <i class="fa-solid fa-pen-to-square"></i>
@@ -57,7 +54,6 @@
                                         <i class="fa-solid fa-trash-can"></i>
                                     </span>
                                 </td>
-                            @endcan
                         </tr>
                     @endif
                 @endforeach

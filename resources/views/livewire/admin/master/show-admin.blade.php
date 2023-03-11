@@ -38,7 +38,6 @@
                     <span class="as-label red">{{ $admin->status }}</span>
                 @endif
             </td>
-            @can('manager')
             <td class="action">
                 @if ($admin->peran === 'Pengelola Utama' || $admin->peran === 'Atasan Utama')
                     <span class="as-label grey" style="cursor: not-allowed">
@@ -53,7 +52,6 @@
                     </span>
                 @endif
             </td>                    
-            @endcan
         </tr>
     @endforeach
 </tbody>

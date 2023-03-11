@@ -14,7 +14,6 @@
                         @endif
                     </td>
                     <td class="col-left">{{ $libur->pengumuman }}</td>
-                    @can('manager')
                         <td class="action">
                             <span onclick="showModal({{ $libur->id }}, 'change')" class="as-label yellow modal-trigger">
                                 <i class="fa-solid fa-pen-to-square"></i>
@@ -23,7 +22,6 @@
                                 <i class="fa-solid fa-trash-can"></i>
                             </span>
                         </td>
-                    @endcan                 
                 </tr>
             @endforeach
         @endforeach
@@ -43,7 +41,6 @@
                             @endif
                         </td>
                         <td class="col-left">{{ $libur->pengumuman }}</td>
-                        @can('manager')
                             <td class="action">
                                 <span onclick="showModal({{ $libur->id }}, 'change')" class="as-label yellow modal-trigger">
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -52,7 +49,6 @@
                                     <i class="fa-solid fa-trash-can"></i>
                                 </span>
                             </td>
-                        @endcan                 
                     </tr>
                 @endforeach
             @endif

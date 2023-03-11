@@ -16,14 +16,12 @@
                 @endcan
                 {{ Auth::user()->peran }}
             </div>
-            @can('manager')
                 <div class="controller-box">
                     <div onclick="showModal('4dd', 'new')" class="controller-btn modal-trigger">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         Tambah Admin
                     </div>
                 </div>
-            @endcan
         </div>
         <div class="data-grid master-grid">
             <table id="admin">
@@ -36,9 +34,7 @@
                         <th class="col-left">Jabatan</th>
                         <th>Peran</th>
                         <th>Status</th>
-                        @can('manager')
                             <th class="action">*</th>
-                        @endcan
                     </tr>
                 </thead>
                 @livewire('admin.master.show-admin')

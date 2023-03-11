@@ -16,16 +16,14 @@
                                 <span class="as-label red">{{ $jabatan->status }}</span>
                             @endif
                         </td>
-                        @can('manager')
-                            <td class="action">
-                                <span onclick="showModal({{ $jabatan->id }}, 'change')" class="as-label yellow modal-trigger">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </span>
-                                <span onclick="showModal({{ $jabatan->id }}, 'destroy')" class="as-label red modal-trigger">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </span>
-                            </td>
-                        @endcan
+                        <td class="action">
+                            <span onclick="showModal({{ $jabatan->id }}, 'change')" class="as-label yellow modal-trigger">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </span>
+                            <span onclick="showModal({{ $jabatan->id }}, 'destroy')" class="as-label red modal-trigger">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </span>
+                        </td>
                     </tr>
                 @endforeach
             @endforeach
@@ -47,16 +45,14 @@
                                     <span class="as-label red">{{ $jabatan->status }}</span>
                                 @endif
                             </td>
-                            @can('manager')
-                                <td class="action">
-                                    <span onclick="showModal({{ $jabatan->id }}, 'change')" class="as-label yellow modal-trigger">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </span>
-                                    <span onclick="showModal({{ $jabatan->id }}, 'destroy')" class="as-label red modal-trigger">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </span>
-                                </td>
-                            @endcan
+                            <td class="action">
+                                <span onclick="showModal({{ $jabatan->id }}, 'change')" class="as-label yellow modal-trigger">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </span>
+                                <span onclick="showModal({{ $jabatan->id }}, 'destroy')" class="as-label red modal-trigger">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </span>
+                            </td>
                         </tr>
                     @endforeach
                 @endforeach

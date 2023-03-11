@@ -16,14 +16,12 @@
                 @endcan
                 {{ Auth::user()->peran }}
             </div>
-            @can('manager')
                 <div class="controller-box">
                     <div onclick="showModal('4dd', 'new')" class="controller-btn modal-trigger">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         Tambah Jabatan
                     </div>
                 </div>
-            @endcan
         </div>
         <div class="data-grid master-grid">
             <table id="jabatan">
@@ -37,9 +35,7 @@
                         <th class="col-left">Jadwal Kerja</th>
                         <th>Gaji Perbulan</th>
                         <th>Status</th>
-                        @can('manager')
-                            <th class="action">*</th>
-                        @endcan
+                        <th class="action">*</th>
                     </tr>
                 </thead>
                 @livewire('admin.master.show-jabatan')

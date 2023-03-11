@@ -15,6 +15,7 @@
 **/
 
 use App\Http\Controllers\DashboardSettings;
+use App\Http\Controllers\Import_Export_Controller;
 use App\Http\Controllers\Jadwals;
 use App\Http\Controllers\PerformaGraphic;
 use App\Http\Controllers\Preview;
@@ -422,6 +423,10 @@ Route::middleware('auth')->group(function() {
             'pageDesc' => 'Laman Data Pegawai ini menampilkan semua data dari setiap pegawai'
         ]);
     });
+
+    Route::get('/dashboard/master/pegawai/import', [Import_Export_Controller::class, 'index']);
+
+    Route::post('/dashboard/master/pegawai/import', [Import_Export_Controller::class, 'import']);
 
     Route::get('/dashboard/master/jabatan', function () {
         return view('admin.masterData.jabatan', [

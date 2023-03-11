@@ -16,14 +16,12 @@
                 @endcan
                 {{ Auth::user()->peran }}
             </div>
-            @can('manager')
                 <div class="controller-box">
                     <div onclick="showModal('4dd', 'new')" class="controller-btn modal-trigger">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         Tambah Jenis Izin
                     </div>
                 </div>
-            @endcan
         </div>
         <div class="data-grid master-grid">
             <table id="izin">
@@ -32,9 +30,7 @@
                         <th>#</th>
                         <th class="col-left">Keterangan Izin</th>
                         <th>Kode Izin</th>
-                        @can('manager')
                             <th class="action">*</th>
-                        @endcan
                     </tr>
                 </thead>
                 @livewire('admin.master.show-izin')
