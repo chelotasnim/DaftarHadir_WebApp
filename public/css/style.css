@@ -14,6 +14,7 @@ body.blue-page {
     --main-color: rgb(101, 129, 244);
     --second-color: rgb(108, 138, 211);
     --third-color: rgb(176, 187, 227);
+    --third-transparent: rgba(176, 187, 227, .5);
     --page-color: rgb(233, 241, 255);
     --placeholder: rgb(240, 246, 254);
     --hover: rgb(239, 244, 254);
@@ -25,6 +26,7 @@ body.red-page {
     --main-color: rgb(255, 100, 100);
     --second-color: rgb(222, 109, 107);
     --third-color: rgb(238, 149, 175);
+    --third-transparent: rgba(238, 149, 175, .5);
     --page-color: rgb(255, 233, 241);
     --placeholder: rgb(254, 240, 246);
     --hover: rgb(254, 239, 244);
@@ -36,6 +38,7 @@ body.green-page {
     --main-color: rgb(100, 200, 150);
     --second-color: rgb(107, 177, 158);
     --third-color: rgb(176, 227, 187);
+    --third-transparent: rgba(176, 227, 187, .5);
     --page-color: rgb(233, 255, 241);
     --placeholder: rgb(240, 254, 246);
     --hover: rgb(239, 254, 244);
@@ -47,6 +50,7 @@ body.black-page {
     --main-color: rgb(100, 100, 130);
     --second-color: rgb(100, 100, 150);
     --third-color: rgb(150, 150, 200);
+    --third-transparent: rgba(150, 150, 200, .5);
     --page-color: rgb(233, 241, 255);
     --placeholder: rgb(240, 246, 254);
     --hover: rgb(239, 244, 254);
@@ -1488,7 +1492,7 @@ input.auto {
 .check-status {
     width: 100%;
     height: 100%;
-    background: rgb(101, 129, 244);
+    background: var(--main-color);
 }
 
 .req-action {
@@ -2644,11 +2648,11 @@ body.no-transition * {
     transform: translateY(-20%);
     pointer-events: none;
     font-size: 250px;
-    color: rgba(176, 187, 227, .5);
+    color: var(--third-transparent);
 }
 
 .import-page.uploaded i {
-    color: rgb(101, 129, 244);
+    color: var(--main-color);
 }
 
 .import-page button, .import-page .fake-btn {
@@ -2659,7 +2663,7 @@ body.no-transition * {
     outline: none;
     padding: 12px 24px;
     border-radius: 8px;
-    background: rgb(101, 129, 244);
+    background: var(--main-color);
     cursor: pointer;
     font-size: 18px;
     color: rgb(255, 255, 255);
@@ -2669,7 +2673,7 @@ body.no-transition * {
     display: inline;
     cursor: context-menu;
     background: none;
-    color: rgba(176, 187, 227, .5);
+    color: var(--third-transparent);
 }
 
 .import-page.uploaded .fake-btn {
@@ -2682,4 +2686,114 @@ body.no-transition * {
 
 .controller-btn.as-label {
     margin: 0;
+}
+
+@media(max-width: 1240px) {
+    .statistic-page {
+        flex-direction: column;
+    }
+
+    .statistic-col:last-child {
+        max-width: 100%;
+    }
+
+    .simple-chart {
+        width: 100%;
+    }
+
+    .page-search input {
+        min-width: 300px;
+    }
+
+    .statistic-page:last-child {
+        max-width: 100%;
+        overflow-x: scroll;
+    }
+
+    .statistic-page:last-child::-webkit-scrollbar {
+        height: 0;
+    }
+
+    .page-info p {
+        max-width: 250px;
+    }
+}
+
+@media(max-width: 1000px) {
+    .db-header-content {
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .page-info {
+        display: none;
+    }
+
+    .page-search {
+        display: flex;
+        width: 100%;
+        min-width: max-content;
+        gap: 5px;
+    }
+
+    .page-search input {
+        min-width: 150px;
+        width: 100%;
+    }
+
+    .db-content {
+        margin-left: 100px;
+        min-width: calc(100vw - 125px);
+        max-width: calc(100vw - 125px);
+    }
+
+    .related-search {
+        transform: translateY(48px);
+    }
+}
+
+@media(max-width: 700px) {
+    .big-chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .filter-box {
+        width: max-content;
+    }
+}
+
+@media(max-width: 550px) {
+    .db-header-label {
+        display: none;
+    }
+
+    .db-section {
+        min-height: calc(100vh - 130px);
+        min-height: calc(100vh - 130px);
+    }
+}
+
+@media(max-width: 450px) {
+    .db-nav {
+        transform: translateX(-100%);
+        padding-left: 8px;
+        min-width: 216px;
+        max-width: 216px;
+    }
+
+    .db-content {
+        margin-left: 24px;
+        min-width: calc(100vw - 50px);
+        max-width: calc(100vw - 50px);
+    }
+}
+
+@media(max-width: 350px) {
+    .db-content {
+        margin-left: 12px;
+        min-width: calc(100vw - 25px);
+        max-width: calc(100vw - 25px);
+    }
 }

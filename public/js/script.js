@@ -283,7 +283,7 @@ function greenUpload() {
     const inputImage = document.querySelector('.image-field');
     const uniqeBtn = document.querySelector('.affect-on-image');
     if(lastUpload === false) {
-        if(inputImage != undefined || inputImage != null) {
+        if(inputImage != undefined || inputImage != null && uniqeBtn != undefined || uniqeBtn != null) {
             if(inputImage.value.length > 0) {
                 inputImage.classList.add('uploaded');
                 inputImage.nextElementSibling.classList.add('uploaded');
@@ -291,11 +291,13 @@ function greenUpload() {
                 <i class="fa-solid fa-users-viewfinder"></i>
                 <h5>Bukti Terupload</h5>
                 `;
-                uniqeBtn.classList.add('uploaded');
-                uniqeBtn.innerHTML =`
-                <i class="fa-solid fa-spinner"></i>
-                Lanjutkan Mengisi
-                `;
+                if(uniqeBtn != undefined || uniqeBtn != null) {         
+                    uniqeBtn.classList.add('uploaded');
+                    uniqeBtn.innerHTML =`
+                    <i class="fa-solid fa-spinner"></i>
+                    Lanjutkan Mengisi
+                    `;
+                };
             }
         }
     } else {
@@ -306,14 +308,18 @@ function greenUpload() {
             <i class="fa-solid fa-users-viewfinder"></i>
             <h5>Upload Bukti</h5>
             `;
-            uniqeBtn.classList.remove('uploaded');
-            uniqeBtn.innerHTML =`
-            <i class="fa-solid fa-file-circle-plus"></i>
-            Tambahkan Data
-            `;
-        }
-    }
-}
+            if(uniqeBtn != undefined || uniqeBtn != null) {
+                if(uniqeBtn.classList.contains('uploaded')) {
+                    uniqeBtn.classList.remove('uploaded');
+                    uniqeBtn.innerHTML =`
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                    Tambahkan Data
+                    `;
+                };
+            };
+        };
+    };
+};
 setInterval(greenUpload, 1000);
 
 const inputImage = document.querySelector('.image-field');

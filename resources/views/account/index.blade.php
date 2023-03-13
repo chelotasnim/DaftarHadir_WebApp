@@ -18,6 +18,15 @@
                     <h5>Daftar Hadir</h5>
                     <p>Aplikasi pengelola presensi secara lebih cepat, efisien dan optimal dengan berbagai fitur lengkap!</p>
                 </div>
+                <div class="scroll-down-info">
+                    <div class="line long"></div>
+                    <div class="text">
+                        Scroll Down
+                    </div>
+                    <div class="line short"></div>
+                    <div class="line short"></div>
+                    <div class="line long"></div>
+                </div>
             </div>
             <div class="col">
                 <form action="/login" method="POST">

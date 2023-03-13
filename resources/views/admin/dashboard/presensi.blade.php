@@ -20,14 +20,12 @@
             <div class="controller-date">
                 Data per tanggal : <span>{{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</span>
             </div>
-            @can('manager')
-                <div class="controller-box">
-                    <div onclick="showModal('4dd', 'new')" class="affect-on-image controller-btn modal-trigger evented-btn">
-                        <i class="fa-solid fa-file-circle-plus"></i>
-                        Presensi Manual
-                    </div>
+            <div class="controller-box">
+                <div onclick="showModal('4dd', 'new')" class="affect-on-image controller-btn modal-trigger evented-btn">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                    Presensi Manual
                 </div>
-            @endcan
+            </div>
         </div>
         <div class="data-grid">
             <table id="presensi">
@@ -42,9 +40,7 @@
                         <th>Check Log</th>
                         <th style="min-width: 45%" class="col-left">Catatan</th>
                         <th>Keterangan</th>
-                        @can('manager')
-                            <th class="action">*</th>
-                        @endcan
+                        <th class="action">*</th>
                     </tr>
                 </thead>
                 @livewire('admin.dashboard.show-presensi')

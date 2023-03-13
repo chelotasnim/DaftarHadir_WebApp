@@ -20,14 +20,12 @@
             <div class="controller-date">
                 Data per tanggal : <span>{{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</span>
             </div>
-            @can('manager')
-                <div class="controller-box">
-                    <div onclick="showModal('4dd', 'new')" class="controller-btn modal-trigger evented-btn">
-                        <i class="fa-solid fa-file-circle-plus"></i>
-                        Tambah Aktivitas
-                    </div>
+            <div class="controller-box">
+                <div onclick="showModal('4dd', 'new')" class="controller-btn modal-trigger evented-btn">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                    Tambah Aktivitas
                 </div>
-            @endcan
+            </div>
         </div>
         <div class="data-grid">
             <table id="aktivitas">
@@ -40,9 +38,7 @@
                         <th>Selesai</th>
                         <th>Aktivitas</th>
                         <th class="col-left">Keterangan</th>
-                        @can('manager')
-                            <th>*</th>
-                        @endcan
+                        <th>*</th>
                     </tr>
                 </thead>
                 @livewire('admin.dashboard.show-aktivitas-pegawai')

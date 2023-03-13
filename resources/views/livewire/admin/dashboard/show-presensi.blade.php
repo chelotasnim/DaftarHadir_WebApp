@@ -35,21 +35,19 @@
                     <span class="as-label">{{ $presensi->keterangan }}</span>
                 @endif
             </td>
-            @can('manager')
-                @if ($presensi->keterangan !== 'Belum Check Log')
-                    <td class="action">
-                        <span onclick="showModal({{ $presensi->id }}, 'destroy')" class="as-label red modal-trigger">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </span>
-                    </td>
-                @else
-                    <td class="action">
-                        <span class="as-label modal-trigger">
-                            <i class="fa-solid fa-spinner"></i>
-                        </span>
-                    </td>
-                @endif
-            @endcan
+            @if ($presensi->keterangan !== 'Belum Check Log')
+                <td class="action">
+                    <span onclick="showModal({{ $presensi->id }}, 'destroy')" class="as-label red modal-trigger">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </span>
+                </td>
+            @else
+                <td class="action">
+                    <span class="as-label modal-trigger">
+                        <i class="fa-solid fa-spinner"></i>
+                    </span>
+                </td>
+            @endif
         </tr>
     @endforeach
 </tbody>

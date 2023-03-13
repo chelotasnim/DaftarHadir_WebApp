@@ -20,14 +20,12 @@
             <div class="controller-date">
                 Data per tanggal : <span>{{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</span>
             </div>
-            @can('manager')
                 <div class="controller-box">
                     <div onclick="showModal('4dd', 'new')" class="controller-btn modal-trigger evented-btn">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         Ajukan Lembur
                     </div>
                 </div>
-            @endcan
         </div>
         <div class="data-grid">
             <table id="lembur">

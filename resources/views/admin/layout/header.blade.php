@@ -212,9 +212,6 @@
                     </div>
                 </div>
                 <div class="db-account">
-                    <div class="db-account-box">
-                        <i class="fa-regular fa-envelope"></i>
-                    </div>
                     <div class="db-account-box profile-acc-box">
                         <img src="{{ asset('assets/app_logo.png') }}" draggable="false"/>
                     </div>

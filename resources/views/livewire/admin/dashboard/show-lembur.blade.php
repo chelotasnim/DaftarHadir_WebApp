@@ -10,7 +10,6 @@
             <td>{{ $lembur->mulai }} WIB</td>
             <td>{{ $lembur->sampai }} WIB</td>
             <td class="col-left text-col">{{ $lembur->keterangan_aktivitas }}</td>
-            @can('manager')
                 <td class="action">
                     <span onclick="showModal({{ $lembur->id }}, 'change')" class="as-label yellow modal-trigger">
                         <i class="fa-solid fa-pen-to-square"></i>
@@ -19,7 +18,6 @@
                         <i class="fa-solid fa-trash-can"></i>
                     </span>
                 </td>
-            @endcan
         </tr>
     @endforeach
 </tbody>

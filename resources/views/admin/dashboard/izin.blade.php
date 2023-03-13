@@ -20,14 +20,12 @@
             <div class="controller-date">
                 Menampilkan semua data izin
             </div>
-            @can('manager')
                 <div class="controller-box">
                     <div onclick="showModal('4dd', 'new')" class="affect-on-image evented-btn controller-btn modal-trigger">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         Tambah Izin
                     </div>
                 </div>
-            @endcan
         </div>
         <div class="data-grid">
             <table id="izin">
@@ -42,9 +40,7 @@
                         <th>Tanggal</th>
                         <th>Keterangan</th>
                         <th style="min-width: 45%">Lampiran</th>
-                        @can('manager')
                             <th class="action">*</th>
-                        @endcan
                     </tr>
                 </thead>
                 @livewire('admin.dashboard.show-izin-presensi')
