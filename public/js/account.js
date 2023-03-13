@@ -38,8 +38,14 @@ if(passEye != undefined || passEye != null) {
             const password = passEye.previousElementSibling;
             if(password.getAttribute('type') == 'password') {
                 password.setAttribute('type', 'text');
+                passEye.innerHTML = `
+                    <i class="fa-regular fa-eye-slash"></i>
+                `;
             } else {
                 password.setAttribute('type', 'password');
+                passEye.innerHTML = `
+                    <i class="fa-regular fa-eye"></i>
+                `;
             };
         }
     )

@@ -33,7 +33,7 @@
                         <div class="password-wrapper">
                             <input type="password" name="password" placeholder="Password">
                             <span class="show-pass">
-                                <i class="fa-solid fa-eye"></i>
+                                <i class="fa-regular fa-eye"></i>
                             </span>
                         </div>
                         <button class="evented-btn">Masuk</button>
