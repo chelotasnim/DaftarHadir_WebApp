@@ -419,7 +419,6 @@ function resetError() {
 function searchError() {
     const notif = document.querySelectorAll('.notif.new');
     if(notif.length > 0) {
-        console.log(notif);
         firstError++;
 
         if(firstError > 1) {
@@ -1024,3 +1023,14 @@ window.addEventListener(
         };
     }
 );
+
+const importBox = document.querySelector('.import-box');
+if(importBox != undefined || importBox != null) {
+    importBox.addEventListener(
+        'change', function() {
+            if(importBox.value.length > 0) {
+                importBox.parentElement.classList.add('uploaded');
+            };
+        }
+    )
+};

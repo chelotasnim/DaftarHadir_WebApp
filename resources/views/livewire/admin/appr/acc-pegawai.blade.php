@@ -1,4 +1,19 @@
 <div wire:poll class="data-template">
+    <div class="data-controller" style="display: @if(!empty($all_id)){{ 'flex' }}@else{{ 'none' }}@endif;margin-bottom: 48px;">
+        <div class="controller-role">
+            {{ count($all_id) }} Pengajuan Dipilih
+        </div>
+        <div class="controller-box">
+            <div class="controller-btn as-label evented-btn green" wire:click="approveAll">
+                <i class="fa-solid fa-check"></i>
+                Approve
+            </div>
+            <div class="controller-btn as-label evented-btn red" wire:click="refuseAll">
+                <i class="fa-solid fa-xmark"></i>
+                Refuse
+            </div>
+        </div>
+    </div>
     <div class="req-card-container">
         <p class="no-data"><span><i class="fa-regular fa-envelope-open"></i></span> Belum ada pengajuan</p>
         @foreach ($allAdmin as $admin)
@@ -8,6 +23,13 @@
                         <p class="tip">Pengajuan</p>
                         <h5>{{ $req->jenis_pengajuan }}</h5>
                         @if ($req->status_pengajuan === 'Menunggu Approval')
+                            <div class="req-status check-card evented-btn" wire:click="checkCard({{ $req->id }})">
+                                @foreach ($all_id as $id)
+                                    @if ($id == $req->id)
+                                        <div class="check-status"></div>
+                                    @endif
+                                @endforeach
+                            </div>
                             <div class="req-status">{{ $req->status_pengajuan }}</div>                            
                         @endif
                         @if ($req->status_pengajuan === 'Approved')
@@ -16,25 +38,27 @@
                         @if ($req->status_pengajuan === 'Refused')
                             <div class="req-status refused">{{ $req->status_pengajuan }}</div>                            
                         @endif
-                        <div class="req-action">
-                            @if ($req->status_pengajuan === 'Menunggu Approval')
-                                <span wire:click="approved({{ $req->id }})" class="as-label evented-btn green">
-                                    <i class="fa-solid fa-check"></i>
-                                    Approve
-                                </span>
-                                <span wire:click="refused({{ $req->id }})" class="as-label evented-btn red refuse-btn">
-                                    <i class="fa-solid fa-xmark"></i>
-                                    Refuse
-                                </span>
-                            @else
-                                <span wire:click="trash({{ $req->id }})" onclick="noData()" class="as-label evented-btn grey">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                    Buang (Telah Diverifikasi)
-                                </span>
-                            @endif
-                        </div>
+                        @if (empty($all_id))
+                            <div class="req-action">
+                                @if ($req->status_pengajuan === 'Menunggu Approval')
+                                    <span wire:click="approved({{ $req->id }})" class="as-label evented-btn green">
+                                        <i class="fa-solid fa-check"></i>
+                                        Approve
+                                    </span>
+                                    <span wire:click="refused({{ $req->id }})" class="as-label evented-btn red refuse-btn">
+                                        <i class="fa-solid fa-xmark"></i>
+                                        Refuse
+                                    </span>
+                                @else
+                                    <span wire:click="trash({{ $req->id }})" onclick="noData()" class="as-label evented-btn grey">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                        Buang (Telah Diverifikasi)
+                                    </span>
+                                @endif
+                            </div>
+                        @endif
                     </div>
-                    <div class="req-desc">
+                    <div class="req-desc @if(!empty($all_id)){{ 'minimize' }}@endif">
                         <p class="desc-title">Keterangan</p>
                         <p class="desc-sender">
                             {{ $req->keterangan_pengirim }}
@@ -92,13 +116,19 @@
                             <div class="form-row">
                                 <div class="form-field">
                                     <label>Nomor WA</label>
-                                    <input type="text" value="Rp {{ $req->no_wa }}" disabled> 
+                                    <input type="text" value="{{ $req->no_wa }}" disabled> 
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-field">
                                     <label>Alamat</label>
-                                    <input type="text" value="Rp {{ $req->alamat }}" disabled> 
+                                    <input type="text" value="{{ $req->alamat }}" disabled> 
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label>Tunjangan PerBulan</label>
+                                    <input type="text" value="Rp {{ $req->tunjangan_tetap }}" disabled> 
                                 </div>
                             </div>
                         @endif

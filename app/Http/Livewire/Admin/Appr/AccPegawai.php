@@ -111,4 +111,32 @@ class AccPegawai extends Component
     {
         ReqPegawai::where('id', $id)->delete();
     }
+
+    public $all_id = [];
+    public function checkCard($id)
+    {
+        if(!in_array($id, $this->all_id)) {
+            array_push($this->all_id, $id);
+        } else {
+            if (($key = array_search($id, $this->all_id)) !== false) {
+                unset($this->all_id[$key]);
+            };
+        };
+    }
+
+    public function approveAll() {
+        foreach ($this->all_id as $id) {
+            $this->approved($id);
+        };
+
+        $this->all_id = [];
+    }
+
+    public function refuseAll() {
+        foreach ($this->all_id as $id) {
+            $this->refused($id);
+        };
+        
+        $this->all_id = [];
+    }
 }

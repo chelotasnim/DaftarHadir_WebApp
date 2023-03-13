@@ -20,6 +20,6 @@ class Import_Export_Controller extends Controller
     public function import() {
         Excel::import(new ImportPegawais, request()->file('file'));
 
-        return back();
+        return back()->with('success', 'Berkas telah dikirimkan!');
     }
 }

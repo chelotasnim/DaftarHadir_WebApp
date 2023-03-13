@@ -1464,6 +1464,33 @@ input.auto {
     color: var(--main-color);
 }
 
+.check-card {
+    display: flex;
+    left: 24px;
+    min-width: 0;
+    width: 32.8px;
+    height: 32.8px;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.check-card::after {
+    position: absolute;
+    content: '';
+    width: 75%;
+    height: 75%;
+    background: rgba(101, 129, 244, .3);
+}
+
+.check-status {
+    width: 100%;
+    height: 100%;
+    background: rgb(101, 129, 244);
+}
+
 .req-action {
     position: absolute;
     display: flex;
@@ -1489,6 +1516,10 @@ input.auto {
     position: relative;
     padding: 32px 24px;
     color: rgb(100, 100, 100);
+}
+
+.req-desc.minimize {
+    padding-top: 24px;
 }
 
 .desc-title {
@@ -2610,15 +2641,20 @@ body.no-transition * {
 }
 
 .import-page i {
+    transform: translateY(-20%);
     pointer-events: none;
-    transform: translateY(-25%);
     font-size: 250px;
     color: rgba(176, 187, 227, .5);
 }
 
-.import-page button {
+.import-page.uploaded i {
+    color: rgb(101, 129, 244);
+}
+
+.import-page button, .import-page .fake-btn {
     position: absolute;
-    bottom: 25%;
+    display: none;
+    bottom: 20%;
     border: none;
     outline: none;
     padding: 12px 24px;
@@ -2627,4 +2663,23 @@ body.no-transition * {
     cursor: pointer;
     font-size: 18px;
     color: rgb(255, 255, 255);
+}
+
+.import-page .fake-btn {
+    display: inline;
+    cursor: context-menu;
+    background: none;
+    color: rgba(176, 187, 227, .5);
+}
+
+.import-page.uploaded .fake-btn {
+    display: none;
+}
+
+.import-page.uploaded button {
+    display: inline;
+}
+
+.controller-btn.as-label {
+    margin: 0;
 }
