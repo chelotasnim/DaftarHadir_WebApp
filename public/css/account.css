@@ -10,6 +10,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+input::-ms-reveal, input::-ms-clear {
+    display: none;
+}
+
 img {
     pointer-events: none;
 }
@@ -220,4 +224,23 @@ button {
 
 .switched-field.used {
     display: block;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.show-pass {
+    position: absolute;
+    display: none;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 14px;
+    color: rgb(150, 150, 150);
+}
+
+.password-wrapper:hover .show-pass {
+    display: inline;
 }

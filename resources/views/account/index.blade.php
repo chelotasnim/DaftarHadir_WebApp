@@ -30,7 +30,12 @@
                         <input fieldFor="name" class="switched-field" type="text" name="name" placeholder="Nama Anda" value="{{ old('name') }}" autocomplete="off">
                         <input fieldFor="username" class="switched-field" type="text" name="username" placeholder="Username" value="{{ old('username') }}" autocomplete="off">
                         <input fieldFor="email" class="switched-field used" type="email" name="email" placeholder="Email" value="{{ old('email') }}" autocomplete="off">
-                        <input type="password" name="password" placeholder="Password">
+                        <div class="password-wrapper">
+                            <input type="password" name="password" placeholder="Password">
+                            <span class="show-pass">
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                        </div>
                         <button class="evented-btn">Masuk</button>
                     </div>
                     <div class="form-footer">

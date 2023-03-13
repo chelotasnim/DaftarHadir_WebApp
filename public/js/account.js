@@ -20,6 +20,7 @@ if(loginTypeBtn != undefined || loginTypeBtn != null) {
                 btn.classList.add('active');
                 const activeField = document.querySelector('.switched-field.used');
                 fields.forEach(field => {
+                    field.value = '';
                     activeField.classList.remove('used');
                     if(field.getAttribute('fieldFor') == btn.getAttribute('loginWith')) {
                         field.classList.add('used');
@@ -28,4 +29,18 @@ if(loginTypeBtn != undefined || loginTypeBtn != null) {
             }
         )
     });
+};
+
+const passEye = document.querySelector('.show-pass');
+if(passEye != undefined || passEye != null) {
+    passEye.addEventListener(
+        'click', function() {
+            const password = passEye.previousElementSibling;
+            if(password.getAttribute('type') == 'password') {
+                password.setAttribute('type', 'text');
+            } else {
+                password.setAttribute('type', 'password');
+            };
+        }
+    )
 };
