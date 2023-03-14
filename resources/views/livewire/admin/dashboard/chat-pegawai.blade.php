@@ -1,5 +1,5 @@
 <div wire:poll.10ms class="chat-app">
-    <div class="chat-list">
+    <div class="chat-list @if($page === 200){{ 'collapse' }}@endif">
         <div class="app-header">
             <div class="profile">
                 <div class="logo">
@@ -59,7 +59,7 @@
             <i class="fa-solid fa-bell"></i>
         </div>
     </div>
-    <div class="chat-content">
+    <div class="chat-content @if($page !== 200){{ 'collapse' }}@endif">
         @if ($page === 200)
             <div class="chat-session">
                 <div class="app-header">
@@ -79,6 +79,9 @@
                                 <span class="profile-tip">{{ $user_chatted[0]->peran }} {{ $user_chatted[0]->instansi->nama_instansi }}</span>
                             @endif
                         </div>
+                    </div>
+                    <div class="leave-chat" style="cursor: pointer" wire:click="leaveChat">
+                        <i class="fa-solid fa-chevron-right"></i>
                     </div>
                 </div>
                 <div class="chat-history" wire:click.prefetch="readChat({{ $user_chatted[0]->id }},{{ Auth::user()->id }})">

@@ -148,6 +148,16 @@
                         <input id="managerName" type="text" wire:model.defer="name" autocomplete="off">
                     </div>
                     <div class="form-field">
+                        <label for="managerUserName">Username Pengelola</label>
+                        <input id="managerUserName" type="text" wire:model.defer="username" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="email">Email Pengelola</label>
+                        <input id="email" type="email" wire:model.defer="email" autocomplete="off">
+                    </div>
+                    <div class="form-field">
                         <label for="password">Password</label>
                         <input id="password" type="password" wire:model.defer="password" autocomplete="off">
                     </div>
@@ -168,7 +178,7 @@
             <span>Mulai</span>
             <i class="fa-solid fa-arrow-right-long"></i>
         </button>
-        <a class="cancel" href="/logout">Batalkan, nanti saja</a>
+        <a class="cancel" href="/logout">Batalkan<span>, nanti saja</span></a>
     </footer>
     @if ($stabilizer == true)
         <span class="send-or-not"></span>

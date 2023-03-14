@@ -42,6 +42,8 @@ class StartForm extends Component
 
     // Agency Manager Datas
     public $name;
+    public $username;
+    public $email;
     public $password;
     
     public function render()
@@ -70,7 +72,9 @@ class StartForm extends Component
 
         // Create New Manager        
         $newManager = $this->validate([
-            'name' => 'required|min:8|max:25|unique:users',
+            'name' => 'required|max:25|min:5|unique:users',
+            'username' => 'required|max:25|min:5|unique:users',
+            'email' => 'required|email:dns',
             'password' => 'required|min:8|max:16'
         ]); 
 

@@ -147,14 +147,18 @@
                             <p>Kelola jenis aktivitas umum yang ada di perusahaanmu</p>
                         </a>
                         @endcan
-                        <a href="/dashboard/master/jadwal-non-shift" class="related-row">
-                            <p class="related-title">Master Data <span>/ Master Jadwal / Jadwal Non-Shift</span></p>
-                            <p>Kelola jadwal dan jam kerja non-shift untuk pegawaimu</p>
-                        </a>
-                        <a href="/dashboard/master/jadwal-shift" class="related-row">
-                            <p class="related-title">Master Data <span>/ Master Jadwal / Jadwal Shift</span></p>
-                            <p>Kelola jadwal dan jam kerja shifting untuk pegawaimu</p>
-                        </a>
+                        @if (Auth::user()->instansi->type_jadwal == 'Semua' || Auth::user()->instansi->type_jadwal == 'Non Shift')
+                            <a href="/dashboard/master/jadwal-non-shift" class="related-row">
+                                <p class="related-title">Master Data <span>/ Master Jadwal / Jadwal Non-Shift</span></p>
+                                <p>Kelola jadwal dan jam kerja non-shift untuk pegawaimu</p>
+                            </a>
+                        @endif
+                        @if (Auth::user()->instansi->type_jadwal == 'Semua' || Auth::user()->instansi->type_jadwal == 'Shift')
+                            <a href="/dashboard/master/jadwal-shift" class="related-row">
+                                <p class="related-title">Master Data <span>/ Master Jadwal / Jadwal Shift</span></p>
+                                <p>Kelola jadwal dan jam kerja shifting untuk pegawaimu</p>
+                            </a>
+                        @endif
                         @can('highOfficer')
                             <a href="/dashboard/master/libur-nasional" class="related-row">
                                 <p class="related-title">Master Data <span>/ Master Jadwal / Libur Nasional</span></p>
@@ -311,8 +315,12 @@
                                     <a href="/dashboard/master/aktivitas">Master Aktivitas</a>
                                 @endcan
                                 <span class="as-label">Jadwal</span>
-                                <a href="/dashboard/master/jadwal-non-shift">Jadwal Non-Shift</a>
-                                <a href="/dashboard/master/jadwal-shift">Jadwal Shift</a>
+                                @if (Auth::user()->instansi->type_jadwal == 'Semua' || Auth::user()->instansi->type_jadwal == 'Non Shift')
+                                    <a href="/dashboard/master/jadwal-non-shift">Jadwal Non-Shift</a>
+                                @endif
+                                @if (Auth::user()->instansi->type_jadwal == 'Semua' || Auth::user()->instansi->type_jadwal == 'Shift')
+                                    <a href="/dashboard/master/jadwal-shift">Jadwal Shift</a>
+                                @endif
                                 @can('highOfficer')
                                     <a href="/dashboard/master/libur-nasional">Libur Nasional</a>                                    
                                 @endcan

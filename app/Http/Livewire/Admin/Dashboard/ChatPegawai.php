@@ -152,4 +152,8 @@ class ChatPegawai extends Component
             $this->show_pegawai = [];
         }
     }
+
+    public function leaveChat() {
+        $this->reset();
+    }
 }
