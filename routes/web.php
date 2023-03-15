@@ -503,6 +503,10 @@ Route::middleware('auth')->group(function() {
 
     Route::post('/dashboard/setting', [DashboardSettings::class, 'ui']);
 
+    Route::post('/dashboard/master/req-jadwal', [Jadwals::class, 'reqNew']);
+    Route::post('/dashboard/master/reqChange-jadwal/{id}', [Jadwals::class, 'reqChange']);
+    Route::post('/dashboard/master/reqDestroy-jadwal/{id}', [Jadwals::class, 'reqDestroy']);
+
     Route::middleware('highOfficer')->group(function() {
         Route::get('/dashboard/master/departemen', function () {
             return view('admin.masterData.departemen', [
@@ -648,10 +652,6 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::middleware('manager')->group(function() {
-        Route::post('/dashboard/master/req-jadwal', [Jadwals::class, 'reqNew']);
-        Route::post('/dashboard/master/reqChange-jadwal/{id}', [Jadwals::class, 'reqChange']);
-        Route::post('/dashboard/master/reqDestroy-jadwal/{id}', [Jadwals::class, 'reqDestroy']);
-        
         Route::get('/dashboard/master/aktivitas', function () {
             return view('admin.masterData.aktivitas', [
                 'parentPage' => 'master',

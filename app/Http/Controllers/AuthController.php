@@ -23,7 +23,9 @@ class AuthController extends Controller
             $validateData['perusahaan_id'] = $check_pegawai[0]->jabatan->jadwal->departemen->perusahaan->id;
             $validateData['departemen_id'] = $check_pegawai[0]->jabatan->jadwal->departemen->id;
             $validateData['pegawai_id'] = $check_pegawai[0]->id;
-            $validateData['name'] = $check_pegawai[0]->email;
+            $validateData['name'] = $check_pegawai[0]->nama;
+            $validateData['username'] = $check_pegawai[0]->nama;
+            $validateData['email'] = $check_pegawai[0]->email;
             $validateData['password'] = bcrypt($validateData['password']);
             $validateData['peran'] = 'Pegawai';
             $validateData['status'] = 'Aktif';
@@ -37,12 +39,29 @@ class AuthController extends Controller
 
     public function login()
     {
+        $method = '';
+        $methodVal = '';
+
+        if(!empty(request()->input('name'))) {
+            $method = 'name';
+            $methodVal = request()->input('name');
+        };
+
+        if(!empty(request()->input('username'))) {
+            $method = 'username';
+            $methodVal = request()->input('username');
+        };
+
+        if(!empty(request()->input('email'))) {
+            $method = 'email';
+            $methodVal = request()->input('email');
+        };
+
         $loginData = request()->validate([
-            'name' => 'email|required',
             'password' => 'required|min:8'
         ]);
 
-        $check_user = User::where('peran', 'Pegawai')->where('name', $loginData['name'])->get();
+        $check_user = User::where('peran', 'Pegawai')->where($method, $methodVal)->get();
         if(count($check_user) > 0) {
             if(password_verify($loginData['password'], $check_user[0]->password)) {
                 return response()->json(['user' => $check_user[0], 'Log' => 1]);

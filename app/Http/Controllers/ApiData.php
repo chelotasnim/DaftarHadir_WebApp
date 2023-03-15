@@ -93,53 +93,6 @@ class ApiData extends Controller
                     array_push($req_data['history'], $this_log);
                 };
             };
-
-            // foreach ($data_checkLog as $log) {
-            //     $total_log_today = 0;
-            //     foreach ($pegawai[0]->jabatan->jadwal->details as $day) {
-            //         if($day->hari == Carbon::now()->isoFormat('dddd')) {
-            //             $total_log_today++;
-            //             if(empty($log->check_log)) {
-            //                 if(strtotime($day->log_time) <= strtotime(Carbon::parse($log->created_at)->format('H:i')) && strtotime($day->log_range) >= strtotime(Carbon::parse($log->created_at)->format('H:i'))) {
-            //                     $this_log['name'] = $day->log_name;
-            //                     $this_log['type'] = $day->log_type;
-            //                     $this_log['time'] = '--;--';
-            //                     $this_log['keterangan'] = $log->keterangan;
-        
-            //                     if(!empty($log->check_log)) {
-            //                         $this_log['time'] = $log->check_log;
-            //                         $total_log_completed++;
-            //                     };
-        
-            //                     if($log->keterangan === 'Terlambat') {
-            //                         $total_log_late++;
-            //                     };
-        
-            //                     array_push($req_data['history'], $this_log);
-            //                 };
-            //             } else {
-            //                 if(strtotime($day->log_time) <= strtotime(Carbon::parse($log->check_log)->format('H:i')) && strtotime($day->log_range) >= strtotime(Carbon::parse($log->check_log)->format('H:i'))) {
-            //                     $this_log['name'] = $day->log_name;
-            //                     $this_log['type'] = $day->log_type;
-            //                     $this_log['time'] = '--;--';
-            //                     $this_log['keterangan'] = $log->keterangan;
-        
-            //                     if(!empty($log->check_log)) {
-            //                         $this_log['time'] = $log->check_log;
-            //                         $total_log_completed++;
-            //                     };
-        
-            //                     if($log->keterangan === 'Terlambat') {
-            //                         $total_log_late++;
-            //                     };
-        
-            //                     array_push($req_data['history'], $this_log);
-            //                 };
-            //             };
-    
-            //         };
-            //     };
-            // };
         };
 
         $req_data['statistic']['total_log'] = $total_log_today;
