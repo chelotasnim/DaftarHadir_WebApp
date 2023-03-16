@@ -1,7 +1,7 @@
-@extends('admin.layout.master')
-
-@section('admin')
-    
-@livewire('admin.appr.acc-jadwal')
-
+@extends('admin.layout.master')
+
+@section('admin')
+    
+@livewire('admin.appr.acc-jadwal')
+
 @endsection

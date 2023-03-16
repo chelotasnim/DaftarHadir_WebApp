@@ -1,7 +1,7 @@
-@extends('admin.layout.master')
-
-@section('admin')
-
-@livewire('admin.laporan.aktivitas')
-
+@extends('admin.layout.master')
+
+@section('admin')
+
+@livewire('admin.laporan.aktivitas')
+
 @endsection

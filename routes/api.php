@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApiData;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatApi;
+use App\Http\Controllers\IzinApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,9 @@ Route::get('/apiCheckLog', [ApiData::class, 'checkLog']);
 Route::get('/apiChat', [ChatApi::class, 'showChat']);
 
 Route::get('/apiChatSession', [ChatApi::class, 'enterChat']);
+
+Route::get('/apiIzinApproved', [IzinApi::class, 'izinApproved']);
+
+Route::get('/apiIzinRefused', [IzinApi::class, 'izinRefused']);
+
+Route::get('/apiIzinWaiting', [IzinApi::class, 'izinWaiting']);

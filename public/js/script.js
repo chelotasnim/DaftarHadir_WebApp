@@ -484,6 +484,7 @@ if(dayBox != undefined || dayBox != null) {
         box.addEventListener(
             'click', function() {
                 const addLog = box.parentElement.parentElement.nextElementSibling.querySelector('.add-check-time');
+                const massSchedul = box.parentElement.parentElement.nextElementSibling.querySelector('.mass-schedul');
                 const boxActive = document.querySelectorAll('.day-box.active');
                 boxActive.forEach(btn => {
                     btn.classList.remove('active');  
@@ -492,6 +493,10 @@ if(dayBox != undefined || dayBox != null) {
 
                 if(addLog != undefined || addLog != null) {
                     addLog.setAttribute('btn-for-day', box.textContent.toLowerCase());
+                };
+
+                if(massSchedul != undefined || massSchedul != null) {
+                    massSchedul.setAttribute('btn-get-day', box.textContent.toLowerCase());
                 };
 
                 dayWrapper.forEach(wrapper => {
@@ -505,12 +510,148 @@ if(dayBox != undefined || dayBox != null) {
     });
 }
 
+const massSchedul = document.querySelectorAll('.mass-schedul');
+const confirmSabtu = document.querySelector('.for-sabtu');
+const confirmMinggu = document.querySelector('.for-minggu');
+if(massSchedul != undefined || massSchedul != null) {
+    massSchedul.forEach(massBtn => {
+        massBtn.addEventListener(
+            'click', function() {
+                massBtn.classList.remove('active');
+
+                const allContainer = massBtn.parentElement.parentElement.parentElement.querySelectorAll('.wrap-check-day');
+                allContainer.forEach(allWrapper => {    
+                    allWrapper.classList.add('is-targeted');
+                    allWrapper.style.display = 'none';
+                });
+
+                const currentContainer = massBtn.parentElement.parentElement.parentElement.querySelector('.day-is-' + massBtn.getAttribute('btn-get-day'));   
+                currentContainer.classList.remove('is-targeted');
+                currentContainer.style.display = 'block';
+
+                let allValueArray = [];
+                const allValue = currentContainer.querySelectorAll('.form-field input');
+                allValue.forEach(input => {
+                    allValueArray.push(input.value);
+                });
+
+                let groupInput = [];
+                for (let index = 0; index < allValueArray.length; index += 6) {
+                    const smallGroup = allValueArray.slice(index, index + 6);
+                    groupInput.push(smallGroup);
+                };
+
+                let dayVal = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
+                const container = massBtn.parentElement.parentElement.parentElement.querySelectorAll('.is-targeted');
+                container.forEach(function(wrapper, index) {
+                    function mainFn() {
+                        groupInput.forEach(countInput => {
+                            const totalLog = wrapper.querySelector('.total-log');
+    
+                            function setElement(rowNumber) {
+                                wrapper.insertAdjacentHTML('beforeend', `
+                                    <div class="form-row log-row" style="margin-bottom: 8px;">
+                                        <div class="form-field">
+                                            <label for="">Nama Check Log</label>
+                                            <input name="log_name_` + dayVal[index + 1] + rowNumber + `" type="text" autocomplete="off" value="` + countInput[0] + `">
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="">Jam / Waktu</label>
+                                            <input name="log_limit_` + dayVal[index + 1] + rowNumber + `" type="time" value="` + countInput[1] + `">
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="">Check Log Dibuka</label>
+                                            <input name="log_time_` + dayVal[index + 1] + rowNumber + `" type="time" value="` + countInput[2] + `">
+                                        </div>
+                                    </div>
+                                    <div class="form-row log-row bottom-field" style="padding-bottom: 32px;margin-bottom: 24px">
+                                        <div class="form-field">
+                                            <label for="log_type_` + dayVal[index + 1] + rowNumber + `">Jenis Check Log</label>
+                                            <input name="log_type_` + dayVal[index + 1] + rowNumber + `" id="log_type_` + dayVal[index + 1] + rowNumber + `" type="text" class="filter-input" autocomplete="off" value="` + countInput[3] + `">
+                                        </div>
+                                        <div class="related-list" style="left: 0; width: 32.5%; transform: translateY(-24px)">
+                                            <p>
+                                                <span class="related-title">Masuk</span>
+                                            </p>
+                                            <p>
+                                                <span class="related-title">Keluar</span>
+                                            </p>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="">Toleransi</label>
+                                            <input name="log_tolerance_` + dayVal[index + 1] + rowNumber + `" type="time" value="` + countInput[4] + `">
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="">Check Log Ditutup</label>
+                                            <input name="log_range_` + dayVal[index + 1] + rowNumber + `" type="time" value="` + countInput[5] + `">
+                                        </div>
+                                    </div>
+                                `);
+                            }
+            
+                            if(wrapper.hasAttribute('count-log')) {
+                                let countLog = parseInt(wrapper.getAttribute('count-log'));
+                
+                                countLog++;
+                                setElement(countLog);
+                                totalLog.value = countLog;
+                                wrapper.setAttribute('count-log', countLog);
+                            };
+                        });
+                    };
+
+                    function confirmMingguFn() {
+                        confirmMinggu.classList.add('active');
+                        const opt = confirmMinggu.querySelectorAll('.answer-box');
+                        opt.forEach(btn => {
+                            btn.addEventListener(
+                                'click', function() {
+                                    if(btn.getAttribute('click-value') === 'yes') {
+                                        mainFn();
+                                        confirmMinggu.classList.remove('active');
+                                    } else {
+                                        confirmMinggu.classList.remove('active');
+                                    }
+                                }
+                            )
+                        });
+                    };
+
+                    if(wrapper.classList.contains('confirm-sabtu')) {
+                        confirmSabtu.classList.add('active');
+                        const opt = confirmSabtu.querySelectorAll('.answer-box');
+                        opt.forEach(btn => {
+                            btn.addEventListener(
+                                'click', function() {
+                                    if(btn.getAttribute('click-value') === 'yes') {
+                                        mainFn();
+                                        confirmSabtu.classList.remove('active');
+                                    } else {
+                                        confirmSabtu.classList.remove('active');
+                                    };
+
+                                    confirmMinggu();
+                                }
+                            )
+                        });
+                    } else if(wrapper.classList.contains('confirm-minggu')) {
+                        confirmMingguFn();
+                    } else {
+                        mainFn();
+                    };
+                });
+            }
+        )
+    });
+};
+
 const addLog = document.querySelectorAll('.add-check-time');
 if(addLog != undefined || addLog != null) {
     addLog.forEach(addBtn => {
         addBtn.addEventListener(
             'click', function() {
                 //LR D45
+                addBtn.parentElement.parentElement.querySelector('.mass-schedul').classList.add('active');
 
                 const checkContainer = addBtn.parentElement.parentElement.parentElement.querySelector('.day-is-' + addBtn.getAttribute('btn-for-day'));
                 const totalLog = checkContainer.querySelector('.total-log');
