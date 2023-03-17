@@ -84,7 +84,25 @@
 
     </div>
 
+    <div class="extra-modal for-sabtu">
+        <div class="extra-modal-card">
+            <p>Apakah anda akan menerapkan jadwal ini pada hari sabtu juga?</p>
+            <div class="answer-row">
+                <div class="answer-box evented-btn" click-value="yes">Ya</div>
+                <div class="answer-box evented-btn" click-value="no">Tidak</div>
+            </div>
+        </div>
+    </div>
 
+    <div class="extra-modal for-minggu">
+        <div class="extra-modal-card">
+            <p>Apakah anda akan menerapkan jadwal ini pada hari minggu juga?</p>
+            <div class="answer-row">
+                <div class="answer-box evented-btn" click-value="yes">Ya</div>
+                <div class="answer-box evented-btn" click-value="no">Tidak</div>
+            </div>
+        </div>
+    </div>
 
     <div class="data-modal full-page-modal">
 
@@ -358,50 +376,37 @@
 
                     </div>
 
+                    <div class="form-field">
+                        <div class="mass-schedul" btn-get-day="senin">
+                            <i class="fa-solid fa-copy"></i>
+                            Isi juga untuk semua hari
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- #LR VW 4L -->
 
-                <div count-log="0" class="day-is-senin wrap-check-day">
-
+                <div count-log="0" class="day-is-senin wrap-check-day is-targeted">
                     <input class="total-log" name="log_total_senin" type="hidden" value="0" readonly>
-
                 </div>
-
-                <div count-log="0" class="day-is-selasa wrap-check-day">
-
+                <div count-log="0" class="day-is-selasa wrap-check-day is-targeted">
                     <input class="total-log" name="log_total_selasa" type="hidden" value="0" readonly>
-
                 </div>
-
-                <div count-log="0" class="day-is-rabu wrap-check-day">
-
+                <div count-log="0" class="day-is-rabu wrap-check-day is-targeted">
                     <input class="total-log" name="log_total_rabu" type="hidden" value="0" readonly>
-
                 </div>
-
-                <div count-log="0" class="day-is-kamis wrap-check-day">
-
+                <div count-log="0" class="day-is-kamis wrap-check-day is-targeted">
                     <input class="total-log" name="log_total_kamis" type="hidden" value="0" readonly>
-
                 </div>
-
-                <div count-log="0" class="day-is-jumat wrap-check-day">
-
+                <div count-log="0" class="day-is-jumat wrap-check-day is-targeted">
                     <input class="total-log" name="log_total_jumat" type="hidden" value="0" readonly>
-
                 </div>
-
-                <div count-log="0" class="day-is-sabtu wrap-check-day">
-
+                <div count-log="0" class="day-is-sabtu wrap-check-day is-targeted @if(Auth::user()->instansi->hari_kerja == '5 Hari Kerja'){{ 'confirm-sabtu' }}@endif">
                     <input class="total-log" name="log_total_sabtu" type="hidden" value="0" readonly>
-
                 </div>
-
-                <div count-log="0" class="day-is-minggu wrap-check-day">
-
+                <div count-log="0" class="day-is-minggu wrap-check-day is-targeted confirm-minggu">
                     <input class="total-log" name="log_total_minggu" type="hidden" value="0" readonly>
-
                 </div>
 
                 <div class="form-row" style="margin-top: 24px">

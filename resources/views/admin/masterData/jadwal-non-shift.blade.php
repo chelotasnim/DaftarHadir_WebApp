@@ -631,9 +631,16 @@
 
                                 </div>
 
+                                <div class="form-field">
+                                    <div class="mass-schedul" btn-get-day="senin">
+                                        <i class="fa-solid fa-copy"></i>
+                                        Isi juga untuk semua hari
+                                    </div>
+                                </div>
+
                             </div>
 
-                            <div is-there-log="0" class="day-is-senin wrap-check-day">
+                            <div is-there-log="0" class="day-is-senin wrap-check-day is-targeted">
 
                                 <input class="total-log" name="log_total_senin" type="hidden" value="0" readonly>
 
@@ -725,7 +732,7 @@
 
                             </div>
 
-                            <div is-there-log="0" class="day-is-selasa wrap-check-day" style="display: none">
+                            <div is-there-log="0" class="day-is-selasa wrap-check-day is-targeted" style="display: none">
 
                                 <input class="total-log" name="log_total_selasa" type="hidden" value="0" readonly>
 
@@ -817,7 +824,7 @@
 
                             </div>
 
-                            <div is-there-log="0" class="day-is-rabu wrap-check-day" style="display: none">
+                            <div is-there-log="0" class="day-is-rabu wrap-check-day is-targeted" style="display: none">
 
                                 <input class="total-log" name="log_total_rabu" type="hidden" value="0" readonly>
 
@@ -909,7 +916,7 @@
 
                             </div>
 
-                            <div is-there-log="0" class="day-is-kamis wrap-check-day" style="display: none">
+                            <div is-there-log="0" class="day-is-kamis wrap-check-day is-targeted" style="display: none">
 
                                 <input class="total-log" name="log_total_kamis" type="hidden" value="0" readonly>
 
@@ -1001,7 +1008,7 @@
 
                             </div>
 
-                            <div is-there-log="0" class="day-is-jumat wrap-check-day" style="display: none">
+                            <div is-there-log="0" class="day-is-jumat wrap-check-day is-targeted" style="display: none">
 
                                 <input class="total-log" name="log_total_jumat" type="hidden" value="0" readonly>
 
@@ -1093,7 +1100,7 @@
 
                             </div>
 
-                            <div is-there-log="0" class="day-is-sabtu wrap-check-day" style="display: none">
+                            <div is-there-log="0" class="day-is-sabtu wrap-check-day is-targeted confirm-sabtu" style="display: none">
 
                                 <input class="total-log" name="log_total_sabtu" type="hidden" value="0" readonly>
 
@@ -1185,7 +1192,7 @@
 
                             </div>
 
-                            <div is-there-log="0" class="day-is-minggu wrap-check-day" style="display: none">
+                            <div is-there-log="0" class="day-is-minggu wrap-check-day is-targeted confirm-minggu" style="display: none">
 
                                 <input class="total-log" name="log_total_minggu" type="hidden" value="0" readonly>
 

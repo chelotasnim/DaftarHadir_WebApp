@@ -19,9 +19,9 @@ if(loginTypeBtn != undefined || loginTypeBtn != null) {
     
                 btn.classList.add('active');
                 const activeField = document.querySelector('.switched-field.used');
+                activeField.classList.remove('used');
                 fields.forEach(field => {
                     field.value = '';
-                    activeField.classList.remove('used');
                     if(field.getAttribute('fieldFor') == btn.getAttribute('loginWith')) {
                         field.classList.add('used');
                     };

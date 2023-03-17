@@ -25,11 +25,11 @@ class ChatPegawai extends Component
     {
         $atasan_utama = [];
         if(Auth::user()->peran == 'Atasan Utama') {
-            $atasan_utama = User::where('peran', '!=', 'Pegawai')->where('peran', '!=', 'Atasan Utama')->get();
+            $atasan_utama = User::where('perusahaan_id', Auth::user()->instansi->id)->where('peran', '!=', 'Pegawai')->where('peran', '!=', 'Atasan Utama')->get();
         } else if(Auth::user()->peran == 'Pengelola Utama') {
-            $atasan_utama = User::where('peran', '!=', 'Pegawai')->where('peran', '!=', 'Pengelola Utama')->get();
+            $atasan_utama = User::where('perusahaan_id', Auth::user()->instansi->id)->where('peran', '!=', 'Pegawai')->where('peran', '!=', 'Pengelola Utama')->get();
         } else {
-            $atasan_utama = User::where('peran', '!=', 'Pegawai')->where('id', '!=', Auth::user()->id)->get();
+            $atasan_utama = User::where('perusahaan_id', Auth::user()->instansi->id)->where('peran', '!=', 'Pegawai')->where('id', '!=', Auth::user()->id)->get();
         };
 
         $user_latest_chat = [];
@@ -132,20 +132,17 @@ class ChatPegawai extends Component
     }
 
     public function searchPegawai() {
-        $pegawai = Pegawai::where('nama', 'like', '%' . $this->nama_pegawai . '%')->latest()->limit(1)->get();
-        if(count($pegawai) === 1) {
-            $pegawai_as_user = User::where('name', $pegawai[0]->email)->where('peran', 'Pegawai')->latest()->limit(1)->get();
-            if(count($pegawai_as_user) === 1) {
-                $latest_chat = Chat::where('pengirim_id', $pegawai_as_user[0]->id)->where('penerima_id', Auth::user()->id)->orWhere('pengirim_id', Auth::user()->id)->where('penerima_id', $pegawai_as_user[0]->id)->latest()->limit(1)->get();
+        $pegawai_as_user = User::where('perusahaan_id', Auth::user()->instansi->id)->where('name', 'like', '%' . $this->nama_pegawai . '%')->where('peran', 'Pegawai')->latest()->limit(1)->get();
+        if(count($pegawai_as_user) === 1) {
+            $latest_chat = Chat::where('pengirim_id', $pegawai_as_user[0]->id)->where('penerima_id', Auth::user()->id)->orWhere('pengirim_id', Auth::user()->id)->where('penerima_id', $pegawai_as_user[0]->id)->latest()->limit(1)->get();
 
-                if(count($latest_chat) === 1) {
-                    $pegawai_as_user[0]['latest_messages'] = $latest_chat[0];
-                } else {
-                    $pegawai_as_user[0]['latest_messages'] = 'Belum ada percakapan disini';
-                };
-
-                $this->show_pegawai = $pegawai_as_user[0];
+            if(count($latest_chat) === 1) {
+                $pegawai_as_user[0]['latest_messages'] = $latest_chat[0];
+            } else {
+                $pegawai_as_user[0]['latest_messages'] = 'Belum ada percakapan disini';
             };
+
+            $this->show_pegawai = $pegawai_as_user[0];
         };
 
         if(strlen($this->nama_pegawai) < 2) {

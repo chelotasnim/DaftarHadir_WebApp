@@ -2719,6 +2719,10 @@ body.no-transition * {
     background: rgba(255, 255, 255, .6);
 }
 
+.extra-modal.for-sabtu {
+    z-index: 10000000000000;
+}
+
 .extra-modal.active {
     display: flex;
 }

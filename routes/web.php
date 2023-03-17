@@ -86,9 +86,8 @@ Route::get('/login', function() {
                     foreach ($pegawai->jabatan->jadwal->details as $detail) {
                         if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
                             $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
-                            $finish_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_range . ':00';
 
-                            $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', '>=', $start_time)->where('created_at', '<=', $finish_time)->count();    
+                            $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
 
                             if($check_presensi === 0) {
                                 $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
@@ -178,9 +177,8 @@ Route::middleware('auth')->group(function() {
                         foreach ($pegawai->jabatan->jadwal->details as $detail) {
                             if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
                                 $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
-                                $finish_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_range . ':00';
 
-                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', '>=', $start_time)->where('created_at', '<=', $finish_time)->count();    
+                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
 
                                 if($check_presensi === 0) {
                                     $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
@@ -242,9 +240,8 @@ Route::middleware('auth')->group(function() {
                         foreach ($pegawai->jabatan->jadwal->details as $detail) {
                             if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
                                 $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
-                                $finish_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_range . ':00';
 
-                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', '>=', $start_time)->where('created_at', '<=', $finish_time)->count();    
+                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
 
                                 if($check_presensi === 0) {
                                     $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
@@ -306,9 +303,8 @@ Route::middleware('auth')->group(function() {
                         foreach ($pegawai->jabatan->jadwal->details as $detail) {
                             if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
                                 $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
-                                $finish_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_range . ':00';
 
-                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', '>=', $start_time)->where('created_at', '<=', $finish_time)->count();    
+                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();   
 
                                 if($check_presensi === 0) {
                                     $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
@@ -396,9 +392,8 @@ Route::middleware('auth')->group(function() {
                         foreach ($pegawai->jabatan->jadwal->details as $detail) {
                             if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
                                 $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
-                                $finish_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_range . ':00';
 
-                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', '>=', $start_time)->where('created_at', '<=', $finish_time)->count();    
+                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();   
 
                                 if($check_presensi === 0) {
                                     $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;

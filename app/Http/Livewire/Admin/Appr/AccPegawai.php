@@ -18,6 +18,7 @@ namespace App\Http\Livewire\Admin\Appr;
 
 use App\Models\ChangeLog;
 use App\Models\Pegawai;
+use App\Models\Presensi;
 use App\Models\ReqPegawai;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -90,6 +91,7 @@ class AccPegawai extends Component
             ChangeLog::create($change);
         } else if($req_data[0]->jenis_pengajuan === 'Penghapusan') {
             Pegawai::where('id', $req_data[0]->pegawai_id)->delete();
+            Presensi::where('pegawai_id', $req_data[0]->pegawai_id)->delete();
 
             ReqPegawai::where('id', $id)->update([
                 'penerima_id' => Auth::user()->id,

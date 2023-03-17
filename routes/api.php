@@ -36,8 +36,4 @@ Route::get('/apiChat', [ChatApi::class, 'showChat']);
 
 Route::get('/apiChatSession', [ChatApi::class, 'enterChat']);
 
-Route::get('/apiIzinApproved', [IzinApi::class, 'izinApproved']);
-
-Route::get('/apiIzinRefused', [IzinApi::class, 'izinRefused']);
-
-Route::get('/apiIzinWaiting', [IzinApi::class, 'izinWaiting']);
+Route::get('/apiShowIzin', [IzinApi::class, 'showIzin']);

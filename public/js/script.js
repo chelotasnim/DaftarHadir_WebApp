@@ -510,6 +510,7 @@ if(dayBox != undefined || dayBox != null) {
     });
 }
 
+let countAdd = 0;
 const massSchedul = document.querySelectorAll('.mass-schedul');
 const confirmSabtu = document.querySelector('.for-sabtu');
 const confirmMinggu = document.querySelector('.for-minggu');
@@ -539,6 +540,10 @@ if(massSchedul != undefined || massSchedul != null) {
                 for (let index = 0; index < allValueArray.length; index += 6) {
                     const smallGroup = allValueArray.slice(index, index + 6);
                     groupInput.push(smallGroup);
+                };
+
+                if(currentContainer.hasAttribute('is-there-log')) {
+                    groupInput = groupInput.slice(currentContainer.getAttribute('is-there-log') - countAdd, currentContainer.getAttribute('is-there-log'));
                 };
 
                 let dayVal = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
@@ -597,6 +602,18 @@ if(massSchedul != undefined || massSchedul != null) {
                                 totalLog.value = countLog;
                                 wrapper.setAttribute('count-log', countLog);
                             };
+
+                            if(wrapper.hasAttribute('is-there-log')) {
+                                const allRow = wrapper.querySelectorAll('.bottom-field');
+            
+                                wrapper.setAttribute('is-there-log', allRow.length + 1);
+            
+                                let countLog = parseInt(wrapper.getAttribute('is-there-log'));
+                                setElement(countLog);
+                                totalLog.value = countLog;
+                            };
+
+                            massBtn.remove();
                         });
                     };
 
@@ -651,6 +668,7 @@ if(addLog != undefined || addLog != null) {
         addBtn.addEventListener(
             'click', function() {
                 //LR D45
+                countAdd++;
                 addBtn.parentElement.parentElement.querySelector('.mass-schedul').classList.add('active');
 
                 const checkContainer = addBtn.parentElement.parentElement.parentElement.querySelector('.day-is-' + addBtn.getAttribute('btn-for-day'));
