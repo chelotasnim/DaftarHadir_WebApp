@@ -46,6 +46,10 @@ class AppServiceProvider extends ServiceProvider
             return $user->peran === 'Atasan Utama' || $user->peran === 'Pengelola Utama';
         });
 
+        Gate::define('superAdmin', function(User $user) {
+            return $user->peran === 'Super Admin';
+        });
+
         config(['app.locale' => 'id']);
         Carbon::setLocale('id');
         date_default_timezone_set('Asia/Jakarta');

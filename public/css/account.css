@@ -199,39 +199,6 @@ button {
     filter: brightness(1.3);
 }
 
-.login-select {
-    display: flex;
-    margin: 12px auto 24px;
-    width: min-content;
-    gap: 8px;
-}
-
-.login-select-box {
-    padding: 12px;
-    background: rgb(255, 255, 255);
-    border-radius: 8px;
-    font-size: 18px;
-    color: rgb(150, 150, 150);
-    cursor: pointer;
-}
-
-.login-select-box.active {
-    background: rgba(101, 129, 244, .9);
-    color: rgb(255, 255, 255);
-}
-
-.login-select-box:hover {
-    transform: translateY(3px);
-}
-
-.switched-field {
-    display: none;
-}
-
-.switched-field.used {
-    display: block;
-}
-
 .password-wrapper {
     position: relative;
 }

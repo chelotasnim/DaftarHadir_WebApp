@@ -38,6 +38,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
+            'name' => 'Super Admin',
+            'username' => 'SuperAdmin',
+            'email' => 'superadmin@gmail.com',
+            'password' => Hash::make('123456789'),
+            'peran' => 'Super Admin',
+            'status' => 'Aktif'
+        ]);
+
+        User::create([
             'perusahaan_id' => 1,
             'name' => 'Yuvi Corp',
             'username' => 'yuvicorp',
