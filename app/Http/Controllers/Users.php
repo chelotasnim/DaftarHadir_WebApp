@@ -46,37 +46,39 @@ class Users extends Controller
 
         $loggedUser = User::where('name', $validate['identity'])->orWhere('username', $validate['identity'])->orWhere('email', $validate['identity'])->limit(1)->get();
 
-        $method = '';
-        if($loggedUser[0]->name == $validate['identity']) {
-            $method = 'name';
-        };
-        if($loggedUser[0]->username == $validate['identity']) {
-            $method = 'username';
-        };
-        if($loggedUser[0]->email == $validate['identity']) {
-            $method = 'email';
-        };
+        if ($loggedUser->count() === 1) {
+            $method = '';
+            if($loggedUser[0]->name == $validate['identity']) {
+                $method = 'name';
+            };
+            if($loggedUser[0]->username == $validate['identity']) {
+                $method = 'username';
+            };
+            if($loggedUser[0]->email == $validate['identity']) {
+                $method = 'email';
+            };
 
-        $userData = [
-            $method => $validate['identity'],
-            'password' => $validate['password']
-        ];
+            $userData = [
+                $method => $validate['identity'],
+                'password' => $validate['password']
+            ];
 
-        if(Auth::attempt($userData)) {
-            if($loggedUser[0]->status === 'Lisensi') {
-                request()->session()->regenerate();
-                return redirect()->intended('/wizard');
-            } else if($loggedUser[0]->status === 'Aktif') {
-                if($loggedUser[0]->peran === 'Pengelola' || $loggedUser[0]->peran === 'Pengelola Utama' || $loggedUser[0]->peran === 'Atasan' || $loggedUser[0]->peran === 'Atasan Utama') {
+            if(Auth::attempt($userData)) {
+                if($loggedUser[0]->status === 'Lisensi') {
                     request()->session()->regenerate();
-                    return redirect()->intended('/dashboard');
-                } else if($loggedUser[0]->peran === 'Super Admin') {
-                    request()->session()->regenerate();
-                    return redirect()->intended('/superDashboard');
-                } else {
-                    Auth::logout();
-                    return back()->with('login_failed', 'Anda tidak memiliki hak akses!')->withInput();
-                }
+                    return redirect()->intended('/wizard');
+                } else if($loggedUser[0]->status === 'Aktif') {
+                    if($loggedUser[0]->peran === 'Pengelola' || $loggedUser[0]->peran === 'Pengelola Utama' || $loggedUser[0]->peran === 'Atasan' || $loggedUser[0]->peran === 'Atasan Utama') {
+                        request()->session()->regenerate();
+                        return redirect()->intended('/dashboard');
+                    } else if($loggedUser[0]->peran === 'Super Admin') {
+                        request()->session()->regenerate();
+                        return redirect()->intended('/superDashboard');
+                    } else {
+                        Auth::logout();
+                        return back()->with('login_failed', 'Anda tidak memiliki hak akses!')->withInput();
+                    }
+                };
             };
         };
 

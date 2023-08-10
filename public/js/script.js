@@ -1199,3 +1199,140 @@ if(importBox != undefined || importBox != null) {
         }
     )
 };
+
+const elementPicker = document.querySelectorAll('.pick-element');
+if (elementPicker != undefined || elementPicker != null) {
+    elementPicker.forEach(picker => {
+        picker.addEventListener(
+            'click', function() {
+                const targetElement = document.querySelectorAll('.element-by-opt');
+                targetElement.forEach(target => {
+                    if(picker.getAttribute('endval') == target.getAttribute('last-opt')) {
+                        if(picker.getAttribute('pick-id') == target.getAttribute('triger-id')) {
+                            target.classList.remove('not-used');
+                        } else {
+                            if(target.hasAttribute('last-opt')) {
+                                target.classList.add('not-used');
+                            };
+                        };
+                    } else {
+                        if(target.hasAttribute('last-opt')) {
+                            if (!picker.parentElement.parentElement.hasAttribute('last-opt')) {
+                                target.classList.add('not-used');
+                            };
+                        };
+                    };
+
+                    if(target.getAttribute('if-opt') == picker.value.trim() && target.getAttribute('triger-id') == picker.getAttribute('pick-id')) {
+                        target.classList.remove('not-used');
+                    } else if(target.getAttribute('if-opt') != picker.value.trim() && target.getAttribute('triger-id') == picker.getAttribute('pick-id')) {
+                        target.classList.add('not-used');
+                    };
+                });
+            }
+        )
+    });
+}
+
+const customTarget = document.querySelector('.custom-target');
+if(customTarget != undefined || customTarget != null) {
+    const parent = customTarget.parentElement.parentElement;
+    let totalTarget = 0;
+
+    customTarget.addEventListener(
+        'click', function() {
+            let element = `
+                <div class="form-row element-by-opt" last-opt="true-atasan" style="margin-bottom: 12px">
+                    <div class="form-field">
+                        <label for="">Target Pesan Custom</label>
+                        <input type="text" autocomplete="off" placeholder="Keterangan" name="custom_target${totalTarget + 1}">
+                    </div>
+                    <div class="form-field">
+                        <label for="">&nbsp;</label>
+                        <input type="number" autocomplete="off" placeholder="Nomor Whatsapp" name="custom_wa${totalTarget + 1}">
+                    </div>
+                </div>
+            `;
+
+            parent.insertAdjacentHTML('afterend', element);
+            totalTarget++;
+        }
+    )
+};
+
+const previewField = document.querySelector('.style-faker');
+if(previewField != undefined || previewField != null) {
+    function formatMessage(style) {
+        let selection = null;
+    
+        if (previewField.selectionStart == previewField.selectionEnd) {
+            selection = previewField.selectionStart;
+        } else {
+            selection = previewField.value.slice(previewField.selectionStart, previewField.selectionEnd);
+            
+            previewField.setRangeText(`${style}${selection}${style}`);
+        };
+    };
+};
+
+const el = document.querySelector('.floating-box');
+if (el != undefined || el != null) {
+    let newPosX = 0, newPosY = 0, startPosX = 0, startPosY = 0;
+
+    // when the user clicks down on the element
+    el.addEventListener('mousedown', function(e){
+        e.preventDefault();
+        
+        // get the starting position of the cursor
+        startPosX = e.clientX;
+        startPosY = e.clientY;
+        
+        document.addEventListener('mousemove', mouseMove);
+        
+        document.addEventListener('mouseup', function(){
+            document.removeEventListener('mousemove', mouseMove);
+        });
+        
+    });
+
+
+    function mouseMove(e) {
+        // calculate the new position
+        newPosX = startPosX - e.clientX;
+        newPosY = startPosY - e.clientY;
+
+        // with each move we also want to update the start X and Y
+        startPosX = e.clientX;
+        startPosY = e.clientY;
+
+        // set the element's new position:
+        el.style.top = (el.offsetTop - newPosY) + "px";
+        el.style.left = (el.offsetLeft - newPosX) + "px";
+    };
+
+    const trigerBtn = document.querySelector('.show-docs');
+    trigerBtn.addEventListener(
+        'click', function() {
+            el.classList.add('active');
+        }
+    );
+
+    const closeBtn = document.querySelector('.close-docs');
+    closeBtn.addEventListener(
+        'click', function() {
+            el.classList.remove('active');
+        }
+    );
+};
+
+const inputComLogo = document.querySelector('.company-logo-input');
+if(inputComLogo != undefined || inputComLogo != null) {
+    inputComLogo.addEventListener(
+        'change', function() {
+            if(inputComLogo.value.length > 0) {
+                const confirmLogo = document.querySelector('.confirm-logo');
+                confirmLogo.style.display = 'flex';
+            };
+        }
+    )
+};

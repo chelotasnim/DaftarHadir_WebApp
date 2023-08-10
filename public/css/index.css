@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Montserrat+Alternates&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(225, 225, 225);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(245, 245, 245);
+}
+
+.page {
+    position: relative;
+    min-height: 100vh;
+}
+
+nav {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    padding: 27px 32px 24px;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    z-index: 1000;
+    gap: 100px;
+}
+
+.nav-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, rgb(151, 179, 255), rgb(245, 245, 245));
+    animation: navled 1s linear infinite;
+}
+
+@keyframes navled {
+    to {
+        background: linear-gradient(to right, rgb(245, 245, 245), rgb(151, 179, 255));
+    }
+}
+
+.banner {
+    position: relative;
+    min-height: 100vh;
+}
+
+.nav-label {
+    font-weight: bold;
+    font-size: 24px;
+    color: rgb(101, 129, 244);
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    font-size: 14px;
+}
+
+.nav-link a {
+    color: rgb(150, 150, 150);
+}
+
+.nav-link a:hover {
+    color: rgb(101, 129, 244);
+}
+
+.main-layer {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 25px rgba(0, 0, 0, .3);
+    border-bottom-right-radius: 50%;
+    overflow: hidden;
+    gap: 32px;
+}
+
+.background-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(101, 129, 244);
+}
+
+.banner-desc, .banner-image {
+    z-index: 10;
+}
+
+.banner-image img {
+    width: 650px;
+    height: 400px;
+}
+
+.banner-desc h5 {
+    font-size: 24px;
+    color: rgb(101, 129, 244);
+}
+
+.banner-desc p {
+    margin-top: 12px;
+    max-width: 500px;
+    line-height: 26px;
+    color: rgb(100, 100, 100);
+}
+
+.nav-extension {
+    position: absolute;
+    display: flex;
+    right: 48px;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn {
+    padding: 5px 12px;
+    border-radius: 5px;
+    border: 1px solid rgb(101, 129, 244);
+    font-size: 12px;
+    color: rgb(101, 129, 244);
+    cursor: pointer;
+}
+
+.btn.on {
+    background: rgb(101, 129, 244);
+    color: rgb(255, 255, 255);
+}
+
+.extra-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.banner-list {
+    margin-top: 20px;
+}
+
+.banner-list-content {
+    display: flex;
+    margin-top: 8px;
+    align-items: center;
+    gap: 8px;
+}
+
+.banner-list-content .check {
+    color: rgb(100, 200, 150);
+}
+
+.banner-list-content .info {
+    color: rgb(100, 100, 100);
+}
+
+.btn.big {
+    margin-top: 24px;
+    width: max-content;
+    font-size: 14px;
+}
+
+.layer-wave {
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    width: 100%;
+}
+
+.show-screen {
+    position: absolute;
+    right: 0;
+    height: 90%;
+    width: 85%;
+    background: linear-gradient(to bottom, rgb(101, 129, 244), rgb(151, 179, 255));
+    border-top-left-radius: 25%;
+    border-bottom-left-radius: 25%;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.k-concept {
+    position: absolute;
+    top: -140px;
+    left: 50px;
+    letter-spacing: -20px;
+    font-weight: bold;
+    font-size: 300px;
+    color: rgb(255, 255, 255);
+    z-index: 10000;
+}
+
+.concept-tagline {
+    position: absolute;
+    top: 180px;
+    left: 32px;
+    font-weight: bold;
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+}
+
+.main-screen {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    flex-wrap: nowrap;
+    min-width: 700px;
+    max-width: 700px;
+    overflow: hidden;
+    transform: translateX(-50%);
+}
+
+.screen-slide {
+    display: flex;
+    min-width: 700px;
+    max-width: 700px;
+    align-items: center;
+    animation: sliding 24s linear infinite;
+    gap: 32px;
+    color: rgb(255, 255, 255);
+}
+
+.screen-slide i {
+    font-size: 100px;
+}
+
+.slide-desc h5 {
+    font-size: 24px;
+}
+
+.slide-desc p {
+    margin-top: 8px;
+    line-height: 24px;
+}
+
+@keyframes sliding {
+    0%, 25% {
+        transform: translateX(0);
+    }
+    26%, 50% {
+        transform: translateX(-100%);
+    }
+    51%, 75% {
+        transform: translateX(-200%);
+    }
+    76%, 100% {
+        transform: translateX(-300%);
+    }
+}
+
+.feature-header {
+    padding: 48px 0 72px;
+    text-align: center;
+}
+
+.feature-header h5 {
+    font-size: 24px;
+    color: rgb(101, 129, 244);
+}
+
+.feature-header p {
+    max-width: 500px;
+    margin: 8px auto 0;
+    color: rgb(100, 100, 100);
+}
+
+.feature-container {
+    display: flex;
+    padding: 0 32px 100px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 24px;
+}
+
+.feature-box {
+    display: flex;
+    padding: 48px 32px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    max-width: 300px;
+    min-width: 300px;
+    background: rgb(255, 255, 255);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, .05), -1px -1px 5px rgba(0, 0, 0, .025);
+    transition: .5s;
+    z-index: 100;
+}
+
+.feature-box i {
+    font-size: 64px;
+    color: rgb(101, 129, 244);
+}
+
+.feature-box h5 {
+    margin: 24px 0 8px;
+    text-align: center;
+    font-size: 18px;
+    color: rgb(101, 129, 244);
+}
+
+.feature-box p {
+    line-height: 20px;
+    font-size: 14px;
+    color: rgb(100, 100, 100);
+}
+
+.feature-box:hover {
+    transform: scale(.9);
+    box-shadow: inset 5px 5px 15px rgba(0, 0, 0, .05), 1px 1px 5px rgba(0, 0, 0, .05);
+    opacity: .75;
+}
+
+.feature-wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transform: rotateY(180deg);
+}
+
+.price-page {
+    display: flex;
+    padding: 80px 0 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.price-pop-up {
+    position: absolute;
+    min-width: 75%;
+    min-height: 85%;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, .05);
+}

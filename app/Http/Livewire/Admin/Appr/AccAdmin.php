@@ -23,8 +23,8 @@ class AccAdmin extends Component
         $data['perusahaan_id'] = $req_data[0]->pegawai->jabatan->jadwal->departemen->perusahaan->id;
         $data['departemen_id'] = $req_data[0]->pegawai->jabatan->jadwal->departemen->id;
         $data['pegawai_id'] = $req_data[0]->pegawai->id;
-        $data['name'] = $req_data[0]->pegawai->name;
-        $data['username'] = $req_data[0]->pegawai->name;
+        $data['name'] = $req_data[0]->pegawai->nama;
+        $data['username'] = $req_data[0]->pegawai->nama;
         $data['email'] = $req_data[0]->pegawai->email;
         if(strlen($req_data[0]->password) > 50) {
             $data['password'] = $req_data[0]->password;

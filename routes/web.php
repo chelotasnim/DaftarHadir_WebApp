@@ -14,12 +14,16 @@
  * SMKN 1 Bondowoso 2022/2023 Students
 **/
 
+use App\Http\Controllers\Autonotifs;
 use App\Http\Controllers\DashboardSettings;
 use App\Http\Controllers\Import_Export_Controller;
 use App\Http\Controllers\Jadwals;
 use App\Http\Controllers\PerformaGraphic;
+use App\Http\Controllers\Perusahaans;
 use App\Http\Controllers\Preview;
 use App\Http\Controllers\Users;
+use App\Models\Autonotif;
+use App\Models\AutonotifTemplate;
 use App\Models\ChangeLog;
 use App\Models\IzinPresensi;
 use App\Models\Pegawai;
@@ -43,73 +47,74 @@ use Illuminate\Support\Facades\Route;
 
 // Main User Manager View
 
+Route::get('/', function() {
+    return view('index');
+});
+
 Route::get('/PwKLOi', function() {
     return view('account.PwKLOi');
 });
 
 Route::get('/login', function() {
-    $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
-    $parsedLibur = $liburNasional->json();
-    $is_now_active = true;
+    // $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
+    // $parsedLibur = $liburNasional->json();
+    // $is_now_active = true;
 
-    $liburNotif = false;
-    $liburName = 'Selamat Bekerja';
+    // $liburNotif = false;
+    // $liburName = 'Selamat Bekerja';
 
-    foreach ($parsedLibur as $libur) {
-        if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
-            $is_now_active = false;
-            $liburNotif = true;
-            $liburName = $libur['holiday_name'];
-        };
-    };
+    // foreach ($parsedLibur as $libur) {
+    //     if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
+    //         $is_now_active = false;
+    //         $liburNotif = true;
+    //         $liburName = $libur['holiday_name'];
+    //     };
+    // };
 
-    if($is_now_active === true) {
-        $pegawais = Pegawai::get();
-        foreach ($pegawais as $pegawai) {
-            $libur_depar = false;
+    // if($is_now_active === true) {
+    //     $pegawais = Pegawai::get();
+    //     foreach ($pegawais as $pegawai) {
+    //         $libur_depar = false;
 
-            if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
-                foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
-                    if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
-                        $libur_depar = true;
-                        $liburNotif = true;
-                        $liburName = $liburDepar->nama_libur;
-                    };
-                };
-            };
+    //         if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
+    //             foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
+    //                 if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
+    //                     $libur_depar = true;
+    //                     $liburNotif = true;
+    //                     $liburName = $liburDepar->nama_libur;
+    //                 };
+    //             };
+    //         };
             
-            if($libur_depar === false) {
-                $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
-                if($check_izin === 0) {
-                    $liburNotif = false;
-                    $liburName = 'Selamat Bekerja';
-                    foreach ($pegawai->jabatan->jadwal->details as $detail) {
-                        if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
-                            $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
+    //         if($libur_depar === false) {
+    //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
+    //             if($check_izin === 0) {
+    //                 $liburNotif = false;
+    //                 $liburName = 'Selamat Bekerja';
+    //                 foreach ($pegawai->jabatan->jadwal->details as $detail) {
+    //                     if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
+    //                         $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
 
-                            $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
+    //                         $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
 
-                            if($check_presensi === 0) {
-                                $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
-                                $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
-                                $new_presensi['pegawai_id'] = $pegawai->id;
-                                $new_presensi['keterangan'] = 'Belum Check Log';
-                                $new_presensi['created_at'] = $start_time;
-                                Presensi::create($new_presensi);
-                            };
-                        };
-                    };
-                } else {
-                    Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
-                };
-            };
-        };
-    };
+    //                         if($check_presensi === 0) {
+    //                             $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
+    //                             $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
+    //                             $new_presensi['pegawai_id'] = $pegawai->id;
+    //                             $new_presensi['keterangan'] = 'Belum Check Log';
+    //                             $new_presensi['created_at'] = $start_time;
+    //                             Presensi::create($new_presensi);
+    //                         };
+    //                     };
+    //                 };
+    //             } else {
+    //                 Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
+    //             };
+    //         };
+    //     };
+    // };
 
-    return view('account.index', [
-        'libur' => $liburNotif,
-        'event' => $liburName
-    ]);
+    return view('account.index');
 })->middleware('guest')->name('login');
 
 
@@ -143,60 +148,60 @@ Route::get('/wizard', function() {
 Route::middleware('auth')->group(function() {
     Route::middleware('superAdmin')->group(function() {
         Route::get('/superDashboard', function() {
-            $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
-            $parsedLibur = $liburNasional->json();
-            $is_now_active = true;
+            // $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
+            // $parsedLibur = $liburNasional->json();
+            // $is_now_active = true;
     
-            foreach ($parsedLibur as $libur) {
-                if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
-                    $is_now_active = false;
-                    $liburNotif = true;
-                    $liburName = $libur['holiday_name'];
-                };
-            };
+            // foreach ($parsedLibur as $libur) {
+            //     if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
+            //         $is_now_active = false;
+            //         $liburNotif = true;
+            //         $liburName = $libur['holiday_name'];
+            //     };
+            // };
     
-            if($is_now_active === true) {
-                $pegawais = Pegawai::get();
-                foreach ($pegawais as $pegawai) {
-                    $libur_depar = false;
+            // if($is_now_active === true) {
+            //     $pegawais = Pegawai::get();
+            //     foreach ($pegawais as $pegawai) {
+            //         $libur_depar = false;
     
-                    if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
-                        foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
-                            if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
-                                $libur_depar = true;
-                                $liburNotif = true;
-                                $liburName = $liburDepar->nama_libur;
-                            };
-                        };
-                    };
+            //         if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
+            //             foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
+            //                 if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
+            //                     $libur_depar = true;
+            //                     $liburNotif = true;
+            //                     $liburName = $liburDepar->nama_libur;
+            //                 };
+            //             };
+            //         };
                     
-                    if($libur_depar === false) {
-                        $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
-                        if($check_izin === 0) {
-                            $liburNotif = false;
-                            $liburName = 'Selamat Bekerja';
-                            foreach ($pegawai->jabatan->jadwal->details as $detail) {
-                                if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
-                                    $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
+            //         if($libur_depar === false) {
+            //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
+            //             if($check_izin === 0) {
+            //                 $liburNotif = false;
+            //                 $liburName = 'Selamat Bekerja';
+            //                 foreach ($pegawai->jabatan->jadwal->details as $detail) {
+            //                     if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
+            //                         $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
     
-                                    $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
+            //                         $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
     
-                                    if($check_presensi === 0) {
-                                        $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
-                                    $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
-                                        $new_presensi['pegawai_id'] = $pegawai->id;
-                                        $new_presensi['keterangan'] = 'Belum Check Log';
-                                        $new_presensi['created_at'] = $start_time;
-                                        Presensi::create($new_presensi);
-                                    };
-                                };
-                            };
-                        } else {
-                            Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
-                        };
-                    };
-                };
-            };
+            //                         if($check_presensi === 0) {
+            //                             $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
+            //                         $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
+            //                             $new_presensi['pegawai_id'] = $pegawai->id;
+            //                             $new_presensi['keterangan'] = 'Belum Check Log';
+            //                             $new_presensi['created_at'] = $start_time;
+            //                             Presensi::create($new_presensi);
+            //                         };
+            //                     };
+            //                 };
+            //             } else {
+            //                 Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
+            //             };
+            //         };
+            //     };
+            // };
 
             return view('admin.developer.index', [
                 'parentPage' => 'dashboard',
@@ -206,61 +211,63 @@ Route::middleware('auth')->group(function() {
         });
     });
 
+    Route::post('/autonotif-test', [Autonotifs::class, 'test']);
+
     Route::get('/dashboard', function () {
-        $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
-        $parsedLibur = $liburNasional->json();
-        $is_now_active = true;
+        // $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
+        // $parsedLibur = $liburNasional->json();
+        // $is_now_active = true;
 
-        foreach ($parsedLibur as $libur) {
-            if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
-                $is_now_active = false;
-                $liburNotif = true;
-                $liburName = $libur['holiday_name'];
-            };
-        };
+        // foreach ($parsedLibur as $libur) {
+        //     if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
+        //         $is_now_active = false;
+        //         $liburNotif = true;
+        //         $liburName = $libur['holiday_name'];
+        //     };
+        // };
 
-        if($is_now_active === true) {
-            $pegawais = Pegawai::get();
-            foreach ($pegawais as $pegawai) {
-                $libur_depar = false;
+        // if($is_now_active === true) {
+        //     $pegawais = Pegawai::get();
+        //     foreach ($pegawais as $pegawai) {
+        //         $libur_depar = false;
 
-                if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
-                    foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
-                        if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
-                            $libur_depar = true;
-                            $liburNotif = true;
-                            $liburName = $liburDepar->nama_libur;
-                        };
-                    };
-                };
+        //         if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
+        //             foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
+        //                 if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
+        //                     $libur_depar = true;
+        //                     $liburNotif = true;
+        //                     $liburName = $liburDepar->nama_libur;
+        //                 };
+        //             };
+        //         };
                 
-                if($libur_depar === false) {
-                    $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
-                    if($check_izin === 0) {
-                        $liburNotif = false;
-                        $liburName = 'Selamat Bekerja';
-                        foreach ($pegawai->jabatan->jadwal->details as $detail) {
-                            if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
-                                $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
+        //         if($libur_depar === false) {
+        //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
+        //             if($check_izin === 0) {
+        //                 $liburNotif = false;
+        //                 $liburName = 'Selamat Bekerja';
+        //                 foreach ($pegawai->jabatan->jadwal->details as $detail) {
+        //                     if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
+        //                         $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
 
-                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
+        //                         $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
 
-                                if($check_presensi === 0) {
-                                    $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
-                                $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
-                                    $new_presensi['pegawai_id'] = $pegawai->id;
-                                    $new_presensi['keterangan'] = 'Belum Check Log';
-                                    $new_presensi['created_at'] = $start_time;
-                                    Presensi::create($new_presensi);
-                                };
-                            };
-                        };
-                    } else {
-                        Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
-                    };
-                };
-            };
-        };
+        //                         if($check_presensi === 0) {
+        //                             $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
+        //                         $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
+        //                             $new_presensi['pegawai_id'] = $pegawai->id;
+        //                             $new_presensi['keterangan'] = 'Belum Check Log';
+        //                             $new_presensi['created_at'] = $start_time;
+        //                             Presensi::create($new_presensi);
+        //                         };
+        //                     };
+        //                 };
+        //             } else {
+        //                 Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
+        //             };
+        //         };
+        //     };
+        // };
 
         return view('admin.dashboard.index', [
             'parentPage' => 'dashboard',
@@ -270,60 +277,60 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::get('/dashboard/presensi', function () {
-        $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
-        $parsedLibur = $liburNasional->json();
-        $is_now_active = true;
+        // $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
+        // $parsedLibur = $liburNasional->json();
+        // $is_now_active = true;
 
-        foreach ($parsedLibur as $libur) {
-            if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
-                $is_now_active = false;
-                $liburNotif = true;
-                $liburName = $libur['holiday_name'];
-            };
-        };
+        // foreach ($parsedLibur as $libur) {
+        //     if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
+        //         $is_now_active = false;
+        //         $liburNotif = true;
+        //         $liburName = $libur['holiday_name'];
+        //     };
+        // };
 
-        if($is_now_active === true) {
-            $pegawais = Pegawai::get();
-            foreach ($pegawais as $pegawai) {
-                $libur_depar = false;
+        // if($is_now_active === true) {
+        //     $pegawais = Pegawai::get();
+        //     foreach ($pegawais as $pegawai) {
+        //         $libur_depar = false;
 
-                if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
-                    foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
-                        if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
-                            $libur_depar = true;
-                            $liburNotif = true;
-                            $liburName = $liburDepar->nama_libur;
-                        };
-                    };
-                };
+        //         if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
+        //             foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
+        //                 if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
+        //                     $libur_depar = true;
+        //                     $liburNotif = true;
+        //                     $liburName = $liburDepar->nama_libur;
+        //                 };
+        //             };
+        //         };
                 
-                if($libur_depar === false) {
-                    $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
-                    if($check_izin === 0) {
-                        $liburNotif = false;
-                        $liburName = 'Selamat Bekerja';
-                        foreach ($pegawai->jabatan->jadwal->details as $detail) {
-                            if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
-                                $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
+        //         if($libur_depar === false) {
+        //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
+        //             if($check_izin === 0) {
+        //                 $liburNotif = false;
+        //                 $liburName = 'Selamat Bekerja';
+        //                 foreach ($pegawai->jabatan->jadwal->details as $detail) {
+        //                     if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
+        //                         $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
 
-                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
+        //                         $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
 
-                                if($check_presensi === 0) {
-                                    $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
-                                $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
-                                    $new_presensi['pegawai_id'] = $pegawai->id;
-                                    $new_presensi['keterangan'] = 'Belum Check Log';
-                                    $new_presensi['created_at'] = $start_time;
-                                    Presensi::create($new_presensi);
-                                };
-                            };
-                        };
-                    } else {
-                        Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
-                    };
-                };
-            };
-        };
+        //                         if($check_presensi === 0) {
+        //                             $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
+        //                         $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
+        //                             $new_presensi['pegawai_id'] = $pegawai->id;
+        //                             $new_presensi['keterangan'] = 'Belum Check Log';
+        //                             $new_presensi['created_at'] = $start_time;
+        //                             Presensi::create($new_presensi);
+        //                         };
+        //                     };
+        //                 };
+        //             } else {
+        //                 Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
+        //             };
+        //         };
+        //     };
+        // };
 
         return view('admin.dashboard.presensi', [
             'parentPage' => 'dashboard',
@@ -333,60 +340,60 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::get('/dashboard/izin', function () {
-        $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
-        $parsedLibur = $liburNasional->json();
-        $is_now_active = true;
+        // $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
+        // $parsedLibur = $liburNasional->json();
+        // $is_now_active = true;
 
-        foreach ($parsedLibur as $libur) {
-            if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
-                $is_now_active = false;
-                $liburNotif = true;
-                $liburName = $libur['holiday_name'];
-            };
-        };
+        // foreach ($parsedLibur as $libur) {
+        //     if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
+        //         $is_now_active = false;
+        //         $liburNotif = true;
+        //         $liburName = $libur['holiday_name'];
+        //     };
+        // };
 
-        if($is_now_active === true) {
-            $pegawais = Pegawai::get();
-            foreach ($pegawais as $pegawai) {
-                $libur_depar = false;
+        // if($is_now_active === true) {
+        //     $pegawais = Pegawai::get();
+        //     foreach ($pegawais as $pegawai) {
+        //         $libur_depar = false;
 
-                if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
-                    foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
-                        if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
-                            $libur_depar = true;
-                            $liburNotif = true;
-                            $liburName = $liburDepar->nama_libur;
-                        };
-                    };
-                };
+        //         if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
+        //             foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
+        //                 if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
+        //                     $libur_depar = true;
+        //                     $liburNotif = true;
+        //                     $liburName = $liburDepar->nama_libur;
+        //                 };
+        //             };
+        //         };
                 
-                if($libur_depar === false) {
-                    $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
-                    if($check_izin === 0) {
-                        $liburNotif = false;
-                        $liburName = 'Selamat Bekerja';
-                        foreach ($pegawai->jabatan->jadwal->details as $detail) {
-                            if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
-                                $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
+        //         if($libur_depar === false) {
+        //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
+        //             if($check_izin === 0) {
+        //                 $liburNotif = false;
+        //                 $liburName = 'Selamat Bekerja';
+        //                 foreach ($pegawai->jabatan->jadwal->details as $detail) {
+        //                     if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
+        //                         $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
 
-                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();   
+        //                         $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();   
 
-                                if($check_presensi === 0) {
-                                    $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
-                                $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
-                                    $new_presensi['pegawai_id'] = $pegawai->id;
-                                    $new_presensi['keterangan'] = 'Belum Check Log';
-                                    $new_presensi['created_at'] = $start_time;
-                                    Presensi::create($new_presensi);
-                                };
-                            };
-                        };
-                    } else {
-                        Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
-                    };
-                };
-            };
-        };
+        //                         if($check_presensi === 0) {
+        //                             $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
+        //                         $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
+        //                             $new_presensi['pegawai_id'] = $pegawai->id;
+        //                             $new_presensi['keterangan'] = 'Belum Check Log';
+        //                             $new_presensi['created_at'] = $start_time;
+        //                             Presensi::create($new_presensi);
+        //                         };
+        //                     };
+        //                 };
+        //             } else {
+        //                 Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
+        //             };
+        //         };
+        //     };
+        // };
 
         return view('admin.dashboard.izin', [
             'parentPage' => 'dashboard',
@@ -422,60 +429,60 @@ Route::middleware('auth')->group(function() {
     Route::get('/dashboard/preview/{data}/{departemen}/{subData}/{subDataVal}', [Preview::class, 'index']);
 
     Route::get('/dashboard/master/pegawai', function () {
-        $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
-        $parsedLibur = $liburNasional->json();
-        $is_now_active = true;
+        // $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
+        // $parsedLibur = $liburNasional->json();
+        // $is_now_active = true;
 
-        foreach ($parsedLibur as $libur) {
-            if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
-                $is_now_active = false;
-                $liburNotif = true;
-                $liburName = $libur['holiday_name'];
-            };
-        };
+        // foreach ($parsedLibur as $libur) {
+        //     if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
+        //         $is_now_active = false;
+        //         $liburNotif = true;
+        //         $liburName = $libur['holiday_name'];
+        //     };
+        // };
 
-        if($is_now_active === true) {
-            $pegawais = Pegawai::get();
-            foreach ($pegawais as $pegawai) {
-                $libur_depar = false;
+        // if($is_now_active === true) {
+        //     $pegawais = Pegawai::get();
+        //     foreach ($pegawais as $pegawai) {
+        //         $libur_depar = false;
 
-                if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
-                    foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
-                        if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
-                            $libur_depar = true;
-                            $liburNotif = true;
-                            $liburName = $liburDepar->nama_libur;
-                        };
-                    };
-                };
+        //         if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
+        //             foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
+        //                 if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
+        //                     $libur_depar = true;
+        //                     $liburNotif = true;
+        //                     $liburName = $liburDepar->nama_libur;
+        //                 };
+        //             };
+        //         };
                 
-                if($libur_depar === false) {
-                    $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
-                    if($check_izin === 0) {
-                        $liburNotif = false;
-                        $liburName = 'Selamat Bekerja';
-                        foreach ($pegawai->jabatan->jadwal->details as $detail) {
-                            if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
-                                $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
+        //         if($libur_depar === false) {
+        //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
+        //             if($check_izin === 0) {
+        //                 $liburNotif = false;
+        //                 $liburName = 'Selamat Bekerja';
+        //                 foreach ($pegawai->jabatan->jadwal->details as $detail) {
+        //                     if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
+        //                         $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
 
-                                $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();   
+        //                         $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();   
 
-                                if($check_presensi === 0) {
-                                    $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
-                                $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
-                                    $new_presensi['pegawai_id'] = $pegawai->id;
-                                    $new_presensi['keterangan'] = 'Belum Check Log';
-                                    $new_presensi['created_at'] = $start_time;
-                                    Presensi::create($new_presensi);
-                                };
-                            };
-                        };
-                    } else {
-                        Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
-                    };
-                };
-            };
-        };
+        //                         if($check_presensi === 0) {
+        //                             $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
+        //                         $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
+        //                             $new_presensi['pegawai_id'] = $pegawai->id;
+        //                             $new_presensi['keterangan'] = 'Belum Check Log';
+        //                             $new_presensi['created_at'] = $start_time;
+        //                             Presensi::create($new_presensi);
+        //                         };
+        //                     };
+        //                 };
+        //             } else {
+        //                 Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->delete();
+        //             };
+        //         };
+        //     };
+        // };
 
         return view('admin.masterData.pegawai', [
             'parentPage' => 'master',
@@ -557,6 +564,59 @@ Route::middleware('auth')->group(function() {
         ]);
     });
 
+    Route::post('/dashboard/pengumuman/autonotif', [Autonotifs::class, 'user']);
+
+    Route::get('/dashboard/pengumuman/notifikasi/{event}', function ($event) {
+        switch($event) {
+            case 'daftar_pegawai':
+                $usedEvent = 'Pendaftaran Pegawai';
+                break;
+            case 'absensi_masuk':
+                $usedEvent = 'Absensi Masuk';
+                break;
+            case 'absensi_keluar':
+                $usedEvent = 'Absensi Keluar';
+                break;
+            case 'absensi_terlambat':
+                $usedEvent = 'Absensi Terlambat';
+                break;
+            case 'absensi_keluar_cepat':
+                $usedEvent = 'Absensi Keluar Cepat';
+                break;
+            case 'alpha':
+                $usedEvent = 'Alpha';
+                break;
+            case 'masuk_reminder':
+                $usedEvent = 'Pengingat Masuk';
+                break;
+            case 'keluar_reminder':
+                $usedEvent = 'Pengingat Keluar';
+                break;
+            case 'ulang_tahun':
+                $usedEvent = 'Ulang Tahun';
+                break;
+            case 'libur':
+                $usedEvent = 'Libur';
+                break;
+            default :
+                $usedEvent = 'Pendaftaran Pegawai';
+                break;
+        }
+
+        $templates = AutonotifTemplate::where('event', $usedEvent)->get();
+
+        return view('admin.pengumuman.notifikasiTabel', [
+            'parentPage' => 'pengumuman',
+            'page' => 'Notifikasi WA',
+            'pageDesc' => 'Laman Notifikasi WA ini berisi konfigurasi akun dan pesan ke Whatsapp Gateway',
+            'event' => $usedEvent,
+            'departemens' => Auth::user()->instansi->departemens,
+            'templates' => $templates
+        ]);
+    });
+
+    Route::post('/add-chat-template', [Autonotifs::class, 'addTemplate']);
+
     Route::get('/dashboard/setting', function () {
         return view('admin.setting');
     });
@@ -566,6 +626,17 @@ Route::middleware('auth')->group(function() {
     Route::post('/dashboard/master/req-jadwal', [Jadwals::class, 'reqNew']);
     Route::post('/dashboard/master/reqChange-jadwal/{id}', [Jadwals::class, 'reqChange']);
     Route::post('/dashboard/master/reqDestroy-jadwal/{id}', [Jadwals::class, 'reqDestroy']);
+
+    Route::get('/dashboard/perusahaan', function() {
+        return view('admin.perusahaan', [
+            'parentPage' => 'perusahaan',
+            'page' => 'Perusahaan',
+            'pageDesc' => 'Laman profil dan pengaturan perusahaan anda',
+            'data' => Auth::user()->instansi
+        ]);
+    });
+
+    Route::post('/dashboard/perusahaan/logo', [Perusahaans::class, 'logo']);
 
     Route::middleware('highOfficer')->group(function() {
         Route::get('/dashboard/master/departemen', function () {

@@ -103,4 +103,8 @@ class User extends Authenticatable
     public function dashboardUi() {
         return $this->hasMany(DashboardSetting::class, 'user_id');
     }
+
+    public function autonotif() {
+        return $this->hasOne(Autonotif::class, 'admin_id');
+    }
 }

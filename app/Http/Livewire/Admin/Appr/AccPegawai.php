@@ -16,10 +16,13 @@
 
 namespace App\Http\Livewire\Admin\Appr;
 
+use App\Models\AutonotifTemplate;
 use App\Models\ChangeLog;
+use App\Models\Departemen;
 use App\Models\Pegawai;
 use App\Models\Presensi;
 use App\Models\ReqPegawai;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -55,15 +58,67 @@ class AccPegawai extends Component
         $change['keterangan'] = $req_data[0]->keterangan_pengirim;
 
         if($req_data[0]->jenis_pengajuan === 'Penambahan') {
-            Pegawai::create($data);
-            ReqPegawai::where('id', $id)->update([
-                'penerima_id' => Auth::user()->id,
-                'status_pengajuan' => 'Approved'
-            ]);
+            // Pegawai::create($data);
+            // ReqPegawai::where('id', $id)->update([
+            //     'penerima_id' => Auth::user()->id,
+            //     'status_pengajuan' => 'Approved'
+            // ]);
 
             $change['perubahan'] = 'Menambahkan pegawai ' . $req_data[0]->nama;
             $change['jenis_perubahan'] = 'Penambahan';
             ChangeLog::create($change);
+
+            $relevant_dept = Departemen::where('id', $req_data[0]->jabatan->jadwal->departemen->id)->limit(1)->get();
+            $templates = AutonotifTemplate::where('event', 'Pendaftaran Pegawai')->get();
+            foreach ($templates as $format) {
+                $message = $format->template;
+                $message = str_replace(
+                    array('[nama_pegawai]', $data['nama']),
+                    array('[nama_departemen]', $relevant_dept[0]->nama_dept),
+                    array('[tgl_hari_ini]', Carbon::now()->isoFormat('dddd, D MMMM Y')),
+                    $message
+                );
+                $message = str_replace(
+                    array('[email_pegawai]', $data['email']),
+                    array('[wa_pegawai]', $data['no_wa']),
+                    array('[jabatan]', $req_data[0]->jabatan->jabatan),
+                    $message
+                );
+                $targets = [];
+
+                if($format->target == 'Semua Atasan ' . Auth::user()->instansi->nama_instansi) {
+                    array_push($targets, $relevant_dept[0]->telp_1, $relevant_dept[0]->telp_2);
+                    if($relevant_dept[0]->telp_3 != '') {
+                        array_push($targets, $relevant_dept[0]->telp_3);
+                    };
+                };
+
+                if($targets != '') {
+                    foreach ($targets as $target) {
+                        header('Content-Type: application/json; charset=utf-8');
+                        $curl = curl_init();
+                        curl_setopt($curl, CURLOPT_URL, 'https://api.autonotif.com/public/new_message/?api_key=' . Auth::user()->autonotif->token . '&username=' . Auth::user()->autonotif->username);
+                        curl_setopt($curl, CURLOPT_HEADER, 0);
+                        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+                        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
+                        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+                        curl_setopt($curl, CURLOPT_TIMEOUT,30);
+                        curl_setopt($curl, CURLOPT_POST, 1);
+                        $params = array (
+                        'message_type' => 'TextMessage',
+                        'message' => $message,
+                        'target' => $target
+                        );
+                        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+        
+        
+                        curl_exec($curl);
+                        curl_close($curl);
+                    }
+                };
+            }
+
+
         } else if($req_data[0]->jenis_pengajuan === 'Perubahan') {
             Pegawai::where('id', $req_data[0]->pegawai_id)->update([
                 'jabatan_id' => $data['jabatan_id'],

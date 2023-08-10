@@ -93,18 +93,6 @@
                     </div>
                 </form>
 
-                @if ($libur == true)
-
-                    <div class="notif success new">
-
-                        <i class="fa-solid fa-mug-hot"></i>
-
-                        <span>Selamat {{ $event }}</span>
-
-                    </div>
-
-                @endif
-
                 @error('identity')
 
                 <div class="notif new">

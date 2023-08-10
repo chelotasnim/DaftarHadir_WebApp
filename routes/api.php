@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiData;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatApi;
 use App\Http\Controllers\IzinApi;
+use App\Http\Controllers\LemburApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +38,5 @@ Route::get('/apiChat', [ChatApi::class, 'showChat']);
 Route::get('/apiChatSession', [ChatApi::class, 'enterChat']);
 
 Route::get('/apiShowIzin', [IzinApi::class, 'showIzin']);
+
+Route::get('/apiShowLembur', [LemburApi::class, 'showLembur']);

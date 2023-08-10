@@ -24,15 +24,27 @@
 
 @php
 
-    $theme = Auth::user()->dashboardUi[0]->theme;
+        $theme = 'blue-page';
 
-    $blob = Auth::user()->dashboardUi[0]->blob;
+        $blob = false;
 
-    $shadow = Auth::user()->dashboardUi[0]->shadow;
+        $shadow = true;
 
-    $filter = Auth::user()->dashboardUi[0]->filter;
+        $filter = false;
 
-    $transition = Auth::user()->dashboardUi[0]->transition;
+        $transition = true;
+
+    if (isset(Auth::user()->dashboardUi[0])) {
+        $theme = Auth::user()->dashboardUi[0]->theme;
+
+        $blob = Auth::user()->dashboardUi[0]->blob;
+
+        $shadow = Auth::user()->dashboardUi[0]->shadow;
+
+        $filter = Auth::user()->dashboardUi[0]->filter;
+
+        $transition = Auth::user()->dashboardUi[0]->transition;
+    }
 
 @endphp
 
@@ -405,9 +417,9 @@
 
                             @endcan
 
-                            <a href="" class="related-row">
+                            <a href="/dashboard/pengumuman/notifikasi/daftar_pegawai" class="related-row">
 
-                                <p class="related-title">Pengumuman <span>/ Notifikasi</span></p>
+                                <p class="related-title">Pesan & Notifikasi <span>/ Notifikasi WA</span></p>
 
                                 <p>Pengaturan format Notifikasi Whatsapp dan SMS</p>
 
@@ -415,13 +427,13 @@
 
                             <a href="" class="related-row">
 
-                                <p class="related-title">Pengumuman <span>/ Mobile App</span></p>
+                                <p class="related-title">Pesan & Notifikasi <span>/ Mobile App</span></p>
 
                                 <p>Pengaturan format Notifikasi mobile app presensi</p>
 
                             </a>
 
-                            <a href="" class="related-row">
+                            <a href="/dashboard/perusahaan" class="related-row">
 
                                 <p class="related-title">Perusahaan</p>
 
@@ -503,27 +515,6 @@
 
                             </div>
                         @else
-                            <div class="main-nav">
-
-                                <div class="nav-icon font-sm">
-
-                                    <i class="fa-solid fa-object-group"></i>
-
-                                    <p>Page Manager</p>
-
-                                </div>
-
-                                <div class="sub-nav">
-
-                                    <a href="">Page Design</a>
-
-                                    <a href="">Page Content</a>
-
-                                    <a href="">Page Analytic</a>
-
-                                </div>
-
-                            </div>
 
                             <div class="main-nav 
 
@@ -741,21 +732,27 @@
 
                             </div>
 
-                            @can('manager')    
+                            <div class="main-nav
 
-                            <div class="main-nav">
+                                @if($parentPage === 'pengumuman')
+
+                                    active
+
+                                @endif
+                            
+                            ">
 
                                 <div class="nav-icon font-md">
 
                                     <i class="fa-solid fa-bell"></i>
 
-                                    <p>Pengumuman</p>
+                                    <p>Pesan & Notifikasi</p>
 
                                 </div>
 
                                 <div class="sub-nav">
 
-                                    <a href="">Notifikasi</a>
+                                    <a href="/dashboard/pengumuman/notifikasi/daftar_pegawai">Notifikasi WA</a>
 
                                     <a href="">Mobile App</a>
 
@@ -763,15 +760,13 @@
 
                             </div>
 
-                            @endcan
-
                             <div class="main-nav">
 
                                 <div class="nav-icon font-md">
 
                                     <i class="fa-solid fa-building"></i>
 
-                                    <a href="" class="link-outside">Perusahaan</a>
+                                    <a href="/dashboard/perusahaan" class="link-outside">Perusahaan</a>
 
                                 </div>
 

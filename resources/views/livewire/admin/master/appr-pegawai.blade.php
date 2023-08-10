@@ -638,7 +638,7 @@
 
                                         <label for="bitrth">Tanggal Lahir</label>
 
-                                        <input wire:model.defer="tgl_lahir" id="bitrth" type="date" autocomplete="off" placeholder="{{ $pegawai->tgl_lahir }}">
+                                        <input wire:model.defer="tgl_lahir" id="bitrth" type="date" autocomplete="off" value="{{ $pegawai->tgl_lahir }}">
 
                                     </div>
 
