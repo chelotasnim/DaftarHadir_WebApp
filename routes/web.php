@@ -12,7 +12,7 @@
  * 
  * Recent Maintainer :
  * SMKN 1 Bondowoso 2022/2023 Students
-**/
+ **/
 
 use App\Http\Controllers\Autonotifs;
 use App\Http\Controllers\DashboardSettings;
@@ -47,15 +47,15 @@ use Illuminate\Support\Facades\Route;
 
 // Main User Manager View
 
-Route::get('/', function() {
+Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/PwKLOi', function() {
+Route::get('/PwKLOi', function () {
     return view('account.PwKLOi');
 });
 
-Route::get('/login', function() {
+Route::get('/login', function () {
     // $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
     // $parsedLibur = $liburNasional->json();
     // $is_now_active = true;
@@ -85,7 +85,7 @@ Route::get('/login', function() {
     //                 };
     //             };
     //         };
-            
+
     //         if($libur_depar === false) {
     //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
     //             if($check_izin === 0) {
@@ -135,7 +135,7 @@ Route::get('/logout', [Users::class, 'logout']);
 
 // Wizard
 
-Route::get('/wizard', function() {
+Route::get('/wizard', function () {
     return view('regist.index');
 })->middleware('newClient');
 
@@ -145,13 +145,13 @@ Route::get('/wizard', function() {
 
 // Dashboard
 
-Route::middleware('auth')->group(function() {
-    Route::middleware('superAdmin')->group(function() {
-        Route::get('/superDashboard', function() {
+Route::middleware('auth')->group(function () {
+    Route::middleware('superAdmin')->group(function () {
+        Route::get('/superDashboard', function () {
             // $liburNasional = Http::get('https://api-harilibur.vercel.app/api');
             // $parsedLibur = $liburNasional->json();
             // $is_now_active = true;
-    
+
             // foreach ($parsedLibur as $libur) {
             //     if(Carbon::now()->format('Y-m-d') === Carbon::parse($libur['holiday_date'])->format('Y-m-d')) {
             //         $is_now_active = false;
@@ -159,12 +159,12 @@ Route::middleware('auth')->group(function() {
             //         $liburName = $libur['holiday_name'];
             //     };
             // };
-    
+
             // if($is_now_active === true) {
             //     $pegawais = Pegawai::get();
             //     foreach ($pegawais as $pegawai) {
             //         $libur_depar = false;
-    
+
             //         if(isset($pegawai->jabatan->jadwal->departemen->liburKhusus[0])) {
             //             foreach ($pegawai->jabatan->jadwal->departemen->liburKhusus as $liburDepar) {
             //                 if(Carbon::now()->format('Y-m-d') >= Carbon::parse($liburDepar->mulai) && Carbon::now()->format('Y-m-d') <= Carbon::parse($liburDepar->sampai)->format('Y-m-d')) {
@@ -174,7 +174,7 @@ Route::middleware('auth')->group(function() {
             //                 };
             //             };
             //         };
-                    
+
             //         if($libur_depar === false) {
             //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
             //             if($check_izin === 0) {
@@ -183,9 +183,9 @@ Route::middleware('auth')->group(function() {
             //                 foreach ($pegawai->jabatan->jadwal->details as $detail) {
             //                     if(Carbon::now()->isoFormat('dddd') === $detail->hari) {
             //                         $start_time = Carbon::now()->format('Y-m-d') . ' ' . $detail->log_time . ':00';
-    
+
             //                         $check_presensi = Presensi::where('pegawai_id', $pegawai->id)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->where('created_at', $start_time)->count();    
-    
+
             //                         if($check_presensi === 0) {
             //                             $new_presensi['perusahaan_id'] = $pegawai->jabatan->jadwal->departemen->perusahaan->id;
             //                         $new_presensi['departemen_id'] = $pegawai->jabatan->jadwal->departemen->id;
@@ -240,7 +240,7 @@ Route::middleware('auth')->group(function() {
         //                 };
         //             };
         //         };
-                
+
         //         if($libur_depar === false) {
         //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
         //             if($check_izin === 0) {
@@ -303,7 +303,7 @@ Route::middleware('auth')->group(function() {
         //                 };
         //             };
         //         };
-                
+
         //         if($libur_depar === false) {
         //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
         //             if($check_izin === 0) {
@@ -366,7 +366,7 @@ Route::middleware('auth')->group(function() {
         //                 };
         //             };
         //         };
-                
+
         //         if($libur_depar === false) {
         //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
         //             if($check_izin === 0) {
@@ -400,7 +400,7 @@ Route::middleware('auth')->group(function() {
             'page' => 'Izin Harian',
             'pageDesc' => 'Laman Izin ini menampilkan rekap izin di hari ini'
         ]);
-    });    
+    });
 
     Route::get('/dashboard/aktivitas', function () {
         return view('admin.dashboard.aktivitas', [
@@ -455,7 +455,7 @@ Route::middleware('auth')->group(function() {
         //                 };
         //             };
         //         };
-                
+
         //         if($libur_depar === false) {
         //             $check_izin = IzinPresensi::where('pegawai_id', $pegawai->id)->whereDate('mulai', '<=', Carbon::now()->format('Y-m-d'))->whereDate('sampai', '>=', Carbon::now()->format('Y-m-d'))->count();
         //             if($check_izin === 0) {
@@ -520,7 +520,7 @@ Route::middleware('auth')->group(function() {
             'departemens' => Auth::user()->instansi->departemens
         ]);
     });
-    
+
     Route::get('/dashboard/master/libur-khusus', function () {
         return view('admin.masterData.libur-khusus', [
             'parentPage' => 'master',
@@ -567,7 +567,7 @@ Route::middleware('auth')->group(function() {
     Route::post('/dashboard/pengumuman/autonotif', [Autonotifs::class, 'user']);
 
     Route::get('/dashboard/pengumuman/notifikasi/{event}', function ($event) {
-        switch($event) {
+        switch ($event) {
             case 'daftar_pegawai':
                 $usedEvent = 'Pendaftaran Pegawai';
                 break;
@@ -598,7 +598,7 @@ Route::middleware('auth')->group(function() {
             case 'libur':
                 $usedEvent = 'Libur';
                 break;
-            default :
+            default:
                 $usedEvent = 'Pendaftaran Pegawai';
                 break;
         }
@@ -627,7 +627,7 @@ Route::middleware('auth')->group(function() {
     Route::post('/dashboard/master/reqChange-jadwal/{id}', [Jadwals::class, 'reqChange']);
     Route::post('/dashboard/master/reqDestroy-jadwal/{id}', [Jadwals::class, 'reqDestroy']);
 
-    Route::get('/dashboard/perusahaan', function() {
+    Route::get('/dashboard/perusahaan', function () {
         return view('admin.perusahaan', [
             'parentPage' => 'perusahaan',
             'page' => 'Perusahaan',
@@ -638,7 +638,7 @@ Route::middleware('auth')->group(function() {
 
     Route::post('/dashboard/perusahaan/logo', [Perusahaans::class, 'logo']);
 
-    Route::middleware('highOfficer')->group(function() {
+    Route::middleware('highOfficer')->group(function () {
         Route::get('/dashboard/master/departemen', function () {
             return view('admin.masterData.departemen', [
                 'parentPage' => 'master',
@@ -658,7 +658,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/dashboard/master/libur-nasional', function () {
             $data = Http::get('https://api-harilibur.vercel.app/api');
             $parseJson = $data->json();
-    
+
             return view('admin.masterData.libur-nasional', [
                 'parentPage' => 'master',
                 'page' => 'Libur Nasional',
@@ -676,8 +676,8 @@ Route::middleware('auth')->group(function() {
         });
     });
 
-    Route::middleware('observer')->group(function() {   
-        Route::get('/dashboard/pengajuan-perubahan/presensi', function() {
+    Route::middleware('observer')->group(function () {
+        Route::get('/dashboard/pengajuan-perubahan/presensi', function () {
             return view('admin.pengajuan.req-presensi', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Presensi',
@@ -685,7 +685,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/izin-presensi', function() {
+        Route::get('/dashboard/pengajuan-perubahan/izin-presensi', function () {
             return view('admin.pengajuan.req-izin-presensi', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Izin',
@@ -693,7 +693,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/aktivitas-pegawai', function() {
+        Route::get('/dashboard/pengajuan-perubahan/aktivitas-pegawai', function () {
             return view('admin.pengajuan.req-aktivitas-pegawai', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Aktivitas',
@@ -701,7 +701,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/lembur', function() {
+        Route::get('/dashboard/pengajuan-perubahan/lembur', function () {
             return view('admin.pengajuan.req-lembur', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Lembur',
@@ -709,7 +709,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/data-departemen', function() {
+        Route::get('/dashboard/pengajuan-perubahan/data-departemen', function () {
             return view('admin.pengajuan.req-departemen', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Departemen',
@@ -717,7 +717,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/data-jabatan', function() {
+        Route::get('/dashboard/pengajuan-perubahan/data-jabatan', function () {
             return view('admin.pengajuan.req-jabatan', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Jabatan',
@@ -725,7 +725,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/data-pegawai', function() {
+        Route::get('/dashboard/pengajuan-perubahan/data-pegawai', function () {
             return view('admin.pengajuan.req-pegawai', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Pegawai',
@@ -733,7 +733,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/data-admin', function() {
+        Route::get('/dashboard/pengajuan-perubahan/data-admin', function () {
             return view('admin.pengajuan.req-admin', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Admin',
@@ -741,7 +741,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/data-aktivitas', function() {
+        Route::get('/dashboard/pengajuan-perubahan/data-aktivitas', function () {
             return view('admin.pengajuan.req-aktivitas', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Aktivitas',
@@ -749,7 +749,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/jadwal', function() {
+        Route::get('/dashboard/pengajuan-perubahan/jadwal', function () {
             return view('admin.pengajuan.jadwal', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Jadwal',
@@ -757,7 +757,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/libur-nasional', function() {
+        Route::get('/dashboard/pengajuan-perubahan/libur-nasional', function () {
             return view('admin.pengajuan.libur-nasional', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Libur Nasional',
@@ -765,7 +765,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/libur-khusus', function() {
+        Route::get('/dashboard/pengajuan-perubahan/libur-khusus', function () {
             return view('admin.pengajuan.libur-khusus', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Libur Khusus',
@@ -773,7 +773,7 @@ Route::middleware('auth')->group(function() {
             ]);
         });
 
-        Route::get('/dashboard/pengajuan-perubahan/izin', function() {
+        Route::get('/dashboard/pengajuan-perubahan/izin', function () {
             return view('admin.pengajuan.req-izin', [
                 'parentPage' => 'approval',
                 'page' => 'Pengajuan Jenis Izin',
@@ -782,7 +782,7 @@ Route::middleware('auth')->group(function() {
         });
     });
 
-    Route::middleware('manager')->group(function() {
+    Route::middleware('manager')->group(function () {
         Route::get('/dashboard/master/aktivitas', function () {
             return view('admin.masterData.aktivitas', [
                 'parentPage' => 'master',
@@ -801,11 +801,11 @@ Route::middleware('auth')->group(function() {
                 'reqJabatans' => Auth::user()->reqJabatan,
                 'reqPegawais' => Auth::user()->reqPegawai
             ]);
-        });    
+        });
     });
 
-    Route::middleware('highManager')->group(function() {
-        Route::get('/dashboard/device', function() {
+    Route::middleware('highManager')->group(function () {
+        Route::get('/dashboard/device', function () {
             return view('admin.device', [
                 'devices' => DB::select('select * from iclock'),
                 'parentPage' => 'device',
